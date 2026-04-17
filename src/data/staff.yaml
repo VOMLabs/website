@@ -1,0 +1,30 @@
+- id: 1
+  name: TheRedJa
+  role: Founder & CEO
+  description: Founder and CEO of VOMLabs. Building the future of web development.
+  social:
+    github: https://github.com/TheRedJa
+    youtube: https://youtube.com/@TheRedJa
+    discord: https://discord.gg/vom
+    email: mailto:the@redja.dev
+  avatar: https://cdn.discordapp.com/avatars/817433286535938068/d7683b95dab8b9114a4e3cf2823d42cc.webp?size=80
+
+- id: 2
+  name: ItzzMateo
+  role: Co-Founder & CTO
+  description: Co-Founder and CTO. Passionate about scalable architecture and developer experience.
+  social:
+    github: https://github.com/ItzzMateo
+    youtube: https://youtube.com/@ItzzMateo
+    discord: https://discord.gg/vom
+  avatar: https://cdn.discordapp.com/avatars/1349786155226238986/4114ffcccdf39af33d87337bcd69bfeb.webp?size=80
+
+- id: 3
+  name: Tobics
+  role: Lead Developer
+  description: Lead Developer at VOMLabs. Creating exceptional user experiences.
+  social:
+    github: https://github.com/Tobics
+    youtube: https://youtube.com/@Tobics
+    discord: https://discord.gg/vom
+  avatar: https://cdn.discordapp.com/avatars/1213129664655265802/f373a8128f8c98cecd484870ff610cc0.webp?size=80
