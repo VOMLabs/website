@@ -1,6 +1,6 @@
-import yaml from "js-yaml";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
+import yaml from "js-yaml";
 
 export interface SocialLinks {
   github?: string;
@@ -20,8 +20,27 @@ export interface StaffMember {
   avatar: string;
 }
 
-export function getStaff(): StaffMember[] {
+interface StaffData {
+  discordServer?: string;
+  staff: StaffMember[];
+}
+
+let cachedData: StaffData | null = null;
+
+export function getStaffData(): StaffData {
+  if (cachedData) return cachedData;
+
   const filePath = join(process.cwd(), "src", "data", "staff.yaml");
   const fileContents = readFileSync(filePath, "utf8");
-  return yaml.load(fileContents) as StaffMember[];
+  const data = yaml.load(fileContents) as StaffData;
+  cachedData = data;
+  return data;
+}
+
+export function getStaff(): StaffMember[] {
+  return getStaffData().staff;
+}
+
+export function getDiscordServer(): string {
+  return getStaffData().discordServer || "https://dc.vomlabs.de";
 }
