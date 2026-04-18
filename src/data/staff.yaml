@@ -2,7 +2,7 @@ discordServer: https://dc.vomlabs.de
 staff:
   - id: 1
     name: TheRedJa
-    role: Founder & Java-Developer
+    role: Owner & Developer
     description: Building scalable backend systems and Minecraft plugins.
     social:
       github: https://github.com/TheRedJa
@@ -12,7 +12,7 @@ staff:
 
   - id: 2
     name: ItzzMateo
-    role: Founder & Developer
+    role: Owner & Developer
     description: Full-stack developer crafting seamless web experiences.
     social:
       github: https://github.com/itzzjustmateo
@@ -23,7 +23,7 @@ staff:
 
   - id: 3
     name: Tobics
-    role: Founder
+    role: Owner
     description: Building innovative solutions and leading technical direction.
     social:
       github: https://github.com/Tobics123342
