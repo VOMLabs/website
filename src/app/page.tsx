@@ -1,4 +1,3 @@
-import { Footer } from "@/components/footer";
 import { Hero } from "@/components/hero";
 import { Navbar } from "@/components/navbar";
 import { StaffGrid } from "@/components/staff-grid";
@@ -9,7 +8,7 @@ export default function Home() {
   const discordServer = getDiscordServer();
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-black">
+    <>
       <Navbar />
       <main className="flex-1 mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
         <Hero />
@@ -17,6 +16,6 @@ export default function Home() {
           <StaffGrid staff={staff} discordServer={discordServer} />
         </div>
       </main>
-    </div>
+    </>
   );
 }
