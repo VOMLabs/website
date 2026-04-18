@@ -21,13 +21,13 @@ export function Footer() {
           </div>
           <nav className="flex items-center gap-6 text-sm">
             <Link
-              href="#"
+              href="/privacy"
               className="text-zinc-600 transition-colors hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-50"
             >
               Privacy Policy
             </Link>
             <Link
-              href="#"
+              href="/tos"
               className="text-zinc-600 transition-colors hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-50"
             >
               Terms of Service

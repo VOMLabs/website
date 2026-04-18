@@ -1,0 +1,110 @@
+import { Footer } from "@/components/footer";
+import { Navbar } from "@/components/navbar";
+import { ThemeProvider } from "@/components/theme-provider";
+
+export const metadata = {
+  title: "Terms of Service - VOMLabs",
+  description: "VOMLabs Terms of Service",
+};
+
+export default function TermsOfService() {
+  return (
+    <div className="min-h-screen bg-zinc-50 dark:bg-black">
+      <ThemeProvider attribute="class" enableSystem disableTransitionOnChange>
+        <Navbar />
+        <main className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-950 dark:text-zinc-50">
+            Terms of Service
+          </h1>
+          <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+            Last updated: April 2026
+          </p>
+
+          <div className="mt-8 space-y-6 text-zinc-600 dark:text-zinc-400">
+            <section>
+              <h2 className="text-lg font-semibold text-zinc-950 dark:text-zinc-50">
+                Acceptance of Terms
+              </h2>
+              <p className="mt-2">
+                By accessing and using the VOMLabs website, you accept and agree
+                to be bound by the terms and provision of this agreement.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-lg font-semibold text-zinc-950 dark:text-zinc-50">
+                Use License
+              </h2>
+              <p className="mt-2">
+                Permission is granted to temporarily use VOMLabs websites and
+                services for personal, non-commercial transitory viewing only.
+                This is the grant of a license, not a transfer of title.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-lg font-semibold text-zinc-950 dark:text-zinc-50">
+                User Account Responsibilities
+              </h2>
+              <p className="mt-2">
+                You are responsible for maintaining the confidentiality of your
+                account and password. You agree to accept responsibility for all
+                activities that occur under your account.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-lg font-semibold text-zinc-950 dark:text-zinc-50">
+                Prohibited Uses
+              </h2>
+              <p className="mt-2">
+                You may not use our services to: violate any applicable laws or
+                regulations, infringe upon the rights of others, or engage in any
+                behavior that could harm VOMLabs or its users.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-lg font-semibold text-zinc-950 dark:text-zinc-50">
+                Limitation of Liability
+              </h2>
+              <p className="mt-2">
+                VOMLabs shall not be liable for any indirect, incidental,
+                special, consequential, or punitive damages resulting from your
+                use of or inability to use our services.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-lg font-semibold text-zinc-950 dark:text-zinc-50">
+                Changes to Terms
+              </h2>
+              <p className="mt-2">
+                We reserve the right to modify these terms at any time. Your
+                continued use of the website following any changes indicates
+                your acceptance of the new terms.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-lg font-semibold text-zinc-950 dark:text-zinc-50">
+                Contact Us
+              </h2>
+              <p className="mt-2">
+                If you have any questions about these terms, please contact us
+                at{" "}
+                <a
+                  href="mailto:legal@vomlabs.com"
+                  className="text-indigo-600 hover:underline dark:text-indigo-400"
+                >
+                  legal@vomlabs.com
+                </a>
+              </p>
+            </section>
+          </div>
+        </main>
+        <Footer />
+      </ThemeProvider>
+    </div>
+  );
+}
