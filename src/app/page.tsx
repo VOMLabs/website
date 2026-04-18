@@ -13,11 +13,10 @@ export default function Home() {
       <Navbar />
       <main className="flex-1 mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
         <Hero />
-        <div className="mt-16">
+        <div id="staff" className="mt-16">
           <StaffGrid staff={staff} discordServer={discordServer} />
         </div>
       </main>
-      <Footer />
     </div>
   );
 }
