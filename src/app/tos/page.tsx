@@ -66,9 +66,9 @@ export default function TermsOfService() {
               Limitation of Liability
             </h2>
             <p className="mt-2">
-              VOMLabs shall not be liable for any indirect, incidental,
-              special, consequential, or punitive damages resulting from your
-              use of or inability to use our services.
+              VOMLabs shall not be liable for any indirect, incidental, special,
+              consequential, or punitive damages resulting from your use of or
+              inability to use our services.
             </p>
           </section>
 
@@ -78,8 +78,8 @@ export default function TermsOfService() {
             </h2>
             <p className="mt-2">
               We reserve the right to modify these terms at any time. Your
-              continued use of the website following any changes indicates
-              your acceptance of the new terms.
+              continued use of the website following any changes indicates your
+              acceptance of the new terms.
             </p>
           </section>
 
@@ -88,8 +88,7 @@ export default function TermsOfService() {
               Contact Us
             </h2>
             <p className="mt-2">
-              If you have any questions about these terms, please contact us
-              at{" "}
+              If you have any questions about these terms, please contact us at{" "}
               <a
                 href="mailto:support@vomlabs.com"
                 className="text-indigo-600 hover:underline dark:text-indigo-400"

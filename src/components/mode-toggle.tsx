@@ -23,8 +23,10 @@ export function ModeToggle() {
     );
   }
 
-  const isLight = theme === "light" || (theme === "system" && resolvedTheme === "light");
-  const isDark = theme === "dark" || (theme === "system" && resolvedTheme === "dark");
+  const isLight =
+    theme === "light" || (theme === "system" && resolvedTheme === "light");
+  const isDark =
+    theme === "dark" || (theme === "system" && resolvedTheme === "dark");
 
   return (
     <div className="flex items-center gap-1 rounded-md border border-zinc-200 dark:border-zinc-800 p-1">

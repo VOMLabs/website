@@ -42,7 +42,7 @@ export function StaffCard({ member, discordServer }: StaffCardProps) {
     <div className="group relative flex flex-col gap-4 rounded-xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-950">
       <div className="flex items-center gap-4">
         {member.avatar ? (
-          // eslint-disable-next-line @next/next/no-img-element
+          // biome-ignore lint/performance/noImgElement: remote avatar URLs may not be whitelisted for next/image
           <img
             src={member.avatar}
             alt={member.name}
@@ -73,14 +73,16 @@ export function StaffCard({ member, discordServer }: StaffCardProps) {
         {member.description}
       </p>
       <div className="flex flex-wrap gap-2">
-        {Object.entries(socials).map(([platform, href]) => (
-          <SocialLink
-            key={platform}
-            href={href!}
-            platform={platform}
-            discordServer={discordServer}
-          />
-        ))}
+        {Object.entries(socials)
+          .filter((entry): entry is [string, string] => Boolean(entry[1]))
+          .map(([platform, href]) => (
+            <SocialLink
+              key={platform}
+              href={href}
+              platform={platform}
+              discordServer={discordServer}
+            />
+          ))}
       </div>
     </div>
   );

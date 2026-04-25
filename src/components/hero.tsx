@@ -1,5 +1,5 @@
-import { ArrowRight } from "lucide-react";
 import { IconBrandGithub, IconWorld } from "@tabler/icons-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 export function Hero() {
