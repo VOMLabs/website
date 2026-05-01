@@ -1,7 +1,6 @@
 import { ArrowRight, BookOpen, Code2, Users } from "lucide-react";
 import Link from "next/link";
-import { Hero } from "@/components/hero";
-import { Navbar } from "@/components/navbar";
+import { HeroShareApp } from "@/components/hero-share-app";
 import { StaffGrid } from "@/components/staff-grid";
 import { getDiscordServer, getStaff } from "@/lib/staff";
 
@@ -11,9 +10,8 @@ export default function Home() {
 
   return (
     <>
-      <Navbar />
-      <main className="flex-1 mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
-        <Hero />
+      <main className="flex-1">
+        <HeroShareApp />
 
         <section className="mt-20">
           <div className="mx-auto max-w-3xl text-center">
