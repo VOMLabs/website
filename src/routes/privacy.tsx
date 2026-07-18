@@ -17,9 +17,9 @@ function PrivacyPage() {
         <div className="flex flex-col gap-6">
           <Section title="Our Commitment">
             <p className="text-muted-foreground text-xs leading-relaxed">
-              VOMLabs is committed to protecting your privacy. We adhere to
-              the principle of data minimization and collect only what is
-              necessary to improve our software.
+              VOMLabs is committed to protecting your privacy. We adhere to the
+              principle of data minimization and collect only what is necessary
+              to improve our software.
             </p>
           </Section>
           <Section title="Data Collection">
@@ -27,15 +27,14 @@ function PrivacyPage() {
             <p className="text-muted-foreground text-xs leading-relaxed">
               Certain VOMLabs plugins may transmit anonymous usage statistics
               via FastStats. This data is limited to non-personal information
-              such as plugin version and server platform, and is used solely
-              to understand software adoption and guide development efforts.
+              such as plugin version and server platform, and is used solely to
+              understand software adoption and guide development efforts.
             </p>
             <h3 className="font-medium text-xs">No Personal Tracking</h3>
             <p className="text-muted-foreground text-xs leading-relaxed">
               VOMLabs does not track personal data, browsing behavior on this
               website, or individual player information. We do not use cookies,
-              analytics scripts, or similar tracking mechanisms on this
-              website.
+              analytics scripts, or similar tracking mechanisms on this website.
             </p>
             <h3 className="font-medium text-xs">Opt-Out Policy</h3>
             <p className="text-muted-foreground text-xs leading-relaxed">
@@ -48,14 +47,13 @@ function PrivacyPage() {
           </Section>
           <Section title="Your Rights">
             <p className="text-muted-foreground text-xs leading-relaxed">
-              To the extent that VOMLabs processes any personal data, you
-              retain the right to access, rectify, or request deletion of such
-              data. Because our data collection is limited to anonymous
-              statistics, these rights will typically have no practical
-              application. If you contact VOMLabs directly, any personal
-              information you provide will be used exclusively for the purpose
-              of responding to your inquiry and will not be retained longer
-              than necessary.
+              To the extent that VOMLabs processes any personal data, you retain
+              the right to access, rectify, or request deletion of such data.
+              Because our data collection is limited to anonymous statistics,
+              these rights will typically have no practical application. If you
+              contact VOMLabs directly, any personal information you provide
+              will be used exclusively for the purpose of responding to your
+              inquiry and will not be retained longer than necessary.
             </p>
           </Section>
           <Section title="Contact">

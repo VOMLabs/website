@@ -66,18 +66,17 @@ function TermsPage() {
             <p className="text-muted-foreground text-xs leading-relaxed">
               VOMLabs software is provided on an "as-is" and "as available"
               basis. To the fullest extent permitted by applicable law, VOMLabs
-                disclaims all warranties, express or implied, including but not
-                limited to the implied warranties of merchantability, fitness
-                for a particular purpose, and non-infringement.
+              disclaims all warranties, express or implied, including but not
+              limited to the implied warranties of merchantability, fitness for
+              a particular purpose, and non-infringement.
             </p>
           </Section>
           <Section title="Limitation of Liability">
             <p className="text-muted-foreground text-xs leading-relaxed">
               In no event shall VOMLabs or its contributors be liable for any
               damages, whether direct, indirect, incidental, special, or
-              consequential, arising out of or in connection with your use of
-              or inability to use VOMLabs software, including but not limited
-              to:
+              consequential, arising out of or in connection with your use of or
+              inability to use VOMLabs software, including but not limited to:
             </p>
             <ul className="flex list-none flex-col gap-1.5 text-muted-foreground text-xs">
               <li>Loss of data or corruption of data.</li>
@@ -91,9 +90,8 @@ function TermsPage() {
               VOMLabs is an independent project and is not affiliated with,
               endorsed by, or sponsored by Microsoft Corporation or Mojang AB.
               All third-party trademarks, assets, and content are the property
-              of their respective owners. Most VOMLabs software and this
-              website are open source. The source code and licenses are
-              available on{" "}
+              of their respective owners. Most VOMLabs software and this website
+              are open source. The source code and licenses are available on{" "}
               <a
                 className="underline underline-offset-2 hover:text-foreground"
                 href="https://github.com/vomlabs"
@@ -107,8 +105,8 @@ function TermsPage() {
           </Section>
           <Section title="Changes to Terms">
             <p className="text-muted-foreground text-xs leading-relaxed">
-              VOMLabs reserves the right to modify or replace these Terms at
-              any time. Any changes will be effective immediately upon posting.
+              VOMLabs reserves the right to modify or replace these Terms at any
+              time. Any changes will be effective immediately upon posting.
               Continued use of VOMLabs software or this website after such
               modifications constitutes your acceptance of the revised Terms.
             </p>
@@ -123,8 +121,8 @@ function TermsPage() {
           </Section>
           <Section title="Contact">
             <p className="text-muted-foreground text-xs leading-relaxed">
-              For questions or concerns regarding these Terms, please contact
-              us at:{" "}
+              For questions or concerns regarding these Terms, please contact us
+              at:{" "}
               <a
                 className="underline underline-offset-2 hover:text-foreground"
                 href="mailto:legal@vomlabs.com"

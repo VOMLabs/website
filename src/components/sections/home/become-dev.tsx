@@ -1,6 +1,7 @@
 import { faDiscord } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { GitFork, Handshake, type LucideIcon, Users } from "lucide-react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 
 const items: {
@@ -23,7 +24,7 @@ const items: {
     icon: Handshake,
     title: "Build with Us",
     description:
-      "Work on Java, Rust, Go, and web projects alongside experienced devs.",
+      "Work on C++, Java, TypeScript, Go, and Rust projects alongside experienced devs.",
   },
 ];
 
@@ -36,7 +37,7 @@ export function BecomeDev() {
             Become a Developer
           </h2>
           <p className="text-muted-foreground text-sm leading-relaxed">
-            Join our community and help build the future of Minecraft tooling.
+            Join our community and help build the future of developer tools.
           </p>
         </div>
         <div className="grid w-full grid-cols-1 gap-3 sm:grid-cols-3">
@@ -47,7 +48,7 @@ export function BecomeDev() {
                 className="flex flex-col items-center gap-2 border border-border bg-muted p-4 text-center"
                 key={item.title}
               >
-                <Icon className="size-5 text-foreground" />
+                <Icon className="size-5 text-primary" />
                 <div className="space-y-0.5">
                   <h3 className="font-medium text-sm">{item.title}</h3>
                   <p className="text-muted-foreground text-xs leading-relaxed">
@@ -59,7 +60,16 @@ export function BecomeDev() {
           })}
         </div>
         <Button
-          onClick={() => window.open("https://discord.vomlabs.com", "_blank")}
+          className="bg-[#5865F2] text-white hover:bg-[#4752c4]"
+          onClick={() => {
+            toast.info("Opening Discord...", { duration: 2000 });
+            window.open(
+              "https://discord.vomlabs.com",
+              "_blank",
+              "noopener,noreferrer"
+            );
+          }}
+          variant="outline"
         >
           <FontAwesomeIcon icon={faDiscord} />
           Join Discord to Apply

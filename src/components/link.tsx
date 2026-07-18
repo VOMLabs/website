@@ -10,7 +10,6 @@ export function Link({
 }: LinkComponentProps) {
   return (
     <RouterLink
-      className={className}
       activeProps={() => {
         const base = {
           className: [className, "text-foreground"].filter(Boolean).join(" "),
@@ -20,6 +19,7 @@ export function Link({
         }
         return { ...base, ...userActiveProps };
       }}
+      className={className}
       {...props}
     />
   );

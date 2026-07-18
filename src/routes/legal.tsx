@@ -45,13 +45,13 @@ function LegalPage() {
                 </a>
               </span>
             </div>
-            <Row label="Website" href="https://vomlabs.com" external>
+            <Row external href="https://vomlabs.com" label="Website">
               vomlabs.com
             </Row>
-            <Row label="Legal Contact" href="mailto:legal@vomlabs.com">
+            <Row href="mailto:legal@vomlabs.com" label="Legal Contact">
               legal@vomlabs.com
             </Row>
-            <Row label="Support" href="mailto:support@vomlabs.com">
+            <Row href="mailto:support@vomlabs.com" label="Support">
               support@vomlabs.com
             </Row>
           </Section>
@@ -63,8 +63,8 @@ function LegalPage() {
             </p>
             <p className="text-muted-foreground text-xs leading-relaxed">
               VOMLabs software is provided on an "as-is" and "as available"
-              basis without any warranty of any kind, whether express or implied,
-              including but not limited to the implied warranties of
+              basis without any warranty of any kind, whether express or
+              implied, including but not limited to the implied warranties of
               merchantability, fitness for a particular purpose, or
               non-infringement. The user assumes all risk arising from the use
               of the software.
@@ -87,8 +87,8 @@ function LegalPage() {
           </Section>
           <Section title="Open Source">
             <p className="text-muted-foreground text-xs leading-relaxed">
-              Most VOMLabs projects and this website are open source. The source code and applicable licenses can be
-              accessed on{" "}
+              Most VOMLabs projects and this website are open source. The source
+              code and applicable licenses can be accessed on{" "}
               <a
                 className="underline underline-offset-2 hover:text-foreground"
                 href="https://github.com/vomlabs"

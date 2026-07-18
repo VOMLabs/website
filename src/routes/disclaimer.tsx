@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/disclaimer")({ component: DisclaimerPage });
+export const Route = createFileRoute("/disclaimer")({
+  component: DisclaimerPage,
+});
 
 function DisclaimerPage() {
   return (
@@ -19,9 +21,9 @@ function DisclaimerPage() {
             <p className="text-muted-foreground text-xs leading-relaxed">
               The information provided by VOMLabs on this website and through
               its software is for general informational and educational purposes
-              only. All information is provided in good faith, but VOMLabs
-              makes no representation or warranty of any kind regarding its
-              accuracy, adequacy, or completeness.
+              only. All information is provided in good faith, but VOMLabs makes
+              no representation or warranty of any kind regarding its accuracy,
+              adequacy, or completeness.
             </p>
           </Section>
           <Section title="No Warranty">
@@ -30,8 +32,8 @@ function DisclaimerPage() {
               basis without any warranty of any kind, whether express or
               implied. This includes, but is not limited to, the implied
               warranties of merchantability, fitness for a particular purpose,
-              and non-infringement. The entire risk arising from the use of
-              the software rests with the user.
+              and non-infringement. The entire risk arising from the use of the
+              software rests with the user.
             </p>
           </Section>
           <Section title="Minecraft Disclaimer">
@@ -54,8 +56,8 @@ function DisclaimerPage() {
           </Section>
           <Section title="Limitation of Liability">
             <p className="text-muted-foreground text-xs leading-relaxed">
-              To the fullest extent permitted by applicable law, VOMLabs and
-              its contributors shall not be liable for any direct, indirect,
+              To the fullest extent permitted by applicable law, VOMLabs and its
+              contributors shall not be liable for any direct, indirect,
               incidental, special, consequential, or exemplary damages arising
               from your use of VOMLabs software or this website, including but
               not limited to data loss, server downtime, or business

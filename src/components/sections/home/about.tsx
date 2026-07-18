@@ -1,4 +1,4 @@
-import { Box, Code2, type LucideIcon, Puzzle, Terminal } from "lucide-react";
+import { Code2, type LucideIcon, Puzzle, Terminal, Wrench } from "lucide-react";
 
 const items: {
   icon: LucideIcon;
@@ -7,15 +7,15 @@ const items: {
 }[] = [
   {
     icon: Puzzle,
-    title: "Minecraft Plugins",
+    title: "Software Engineering",
     description:
-      "Performant, modern, and 100% configurable plugins designed to enhance any server experience without the bloat.",
+      "Performant, modern, and well-crafted software designed to solve real problems without the bloat.",
   },
   {
-    icon: Box,
-    title: "Minecraft Mods",
+    icon: Wrench,
+    title: "Open Source Projects",
     description:
-      "Feature-rich modifications that bring custom content, mechanics, and gameplay possibilities to your world.",
+      "Feature-rich tools and libraries that empower developers and contribute back to the community.",
   },
   {
     icon: Code2,
@@ -27,7 +27,7 @@ const items: {
     icon: Terminal,
     title: "Developer Tools",
     description:
-      "Open-source resources, libraries, and tooling for the Minecraft development community and beyond.",
+      "Open-source resources, libraries, and tooling for the development community and beyond.",
   },
 ];
 
@@ -40,8 +40,8 @@ export function About() {
             What is VOMLabs
           </h2>
           <p className="text-muted-foreground text-sm leading-relaxed">
-            We are an organization of developers crafting Minecraft services,
-            modern websites, developer tools, and more.
+            We are a team of developers building modern software, open-source
+            tools, and developer-focused solutions.
           </p>
         </div>
         <div className="grid w-full grid-cols-1 gap-3 sm:grid-cols-2 lg:gap-5">
@@ -52,7 +52,7 @@ export function About() {
                 className="flex flex-col items-start gap-2 border border-border bg-muted p-4 text-left"
                 key={item.title}
               >
-                <Icon className="size-5 text-foreground" />
+                <Icon className="size-5 text-primary" />
                 <div className="space-y-1">
                   <h3 className="font-medium text-sm">{item.title}</h3>
                   <p className="text-muted-foreground text-xs leading-relaxed">

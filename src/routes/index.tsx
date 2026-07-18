@@ -12,11 +12,21 @@ function App() {
   return (
     <div className="flex flex-col">
       <Hero />
-      <Features />
-      <About />
-      <BecomeDev />
-      <Engineers />
-      <Faq />
+      <div id="features">
+        <Features />
+      </div>
+      <div id="about">
+        <About />
+      </div>
+      <div id="become-a-developer">
+        <BecomeDev />
+      </div>
+      <div id="engineers">
+        <Engineers />
+      </div>
+      <div id="faq">
+        <Faq />
+      </div>
     </div>
   );
 }

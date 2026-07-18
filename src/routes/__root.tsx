@@ -1,9 +1,10 @@
 import { TanStackDevtools } from "@tanstack/react-devtools";
 import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
-import { Footer } from "@/components/sections/home/footer";
 import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/sections/home/footer";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import appCss from "../styles.css?url";
 
@@ -54,7 +55,7 @@ export const Route = createRootRoute({
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         <HeadContent />
       </head>
@@ -67,6 +68,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
               <Footer />
             </div>
           </TooltipProvider>
+          <Toaster />
         </ThemeProvider>
         <TanStackDevtools
           config={{

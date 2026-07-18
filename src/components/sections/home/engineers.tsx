@@ -10,6 +10,7 @@ import {
   Workflow,
   Wrench,
 } from "lucide-react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 
 const items: {
@@ -33,7 +34,7 @@ const items: {
     icon: Wrench,
     title: "Modern Tooling",
     description:
-      "Leverage the latest technologies like React, Rust, and Paper for high-performance development.",
+      "Leverage the latest technologies like React, Rust, C++, and Go for high-performance development.",
   },
   {
     icon: RefreshCw,
@@ -82,7 +83,7 @@ export function Engineers() {
                 className="flex flex-col items-center gap-2 border border-border bg-muted p-4 text-center"
                 key={item.title}
               >
-                <Icon className="size-5 text-foreground" />
+                <Icon className="size-5 text-primary" />
                 <div className="space-y-0.5">
                   <h3 className="font-medium text-sm">{item.title}</h3>
                   <p className="text-muted-foreground text-xs leading-relaxed">
@@ -94,7 +95,14 @@ export function Engineers() {
           })}
         </div>
         <Button
-          onClick={() => window.open("https://docs.vomlabs.com", "_blank")}
+          onClick={() => {
+            toast.info("Opening documentation...", { duration: 2000 });
+            window.open(
+              "https://docs.vomlabs.com",
+              "_blank",
+              "noopener,noreferrer"
+            );
+          }}
         >
           <FontAwesomeIcon icon={faBookOpen} />
           View the Documentation

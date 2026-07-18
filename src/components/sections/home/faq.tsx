@@ -16,6 +16,11 @@ const faqs: {
       "Yes, most of our tools are open source and free to use for both personal and commercial projects under the respective project licenses.",
   },
   {
+    question: "What languages and technologies does VOMLabs use?",
+    answer:
+      "We primarily work with C++, Java, TypeScript, and Go. We also occasionally use Rust when the use case calls for it, along with modern web frameworks and tooling.",
+  },
+  {
     question: "Do you collect any telemetry?",
     answer:
       "No. We do not track any of your data. Your privacy is our priority, ensuring a safe and private development experience.",
@@ -50,9 +55,9 @@ export function Faq() {
             return (
               <div className="border border-border bg-muted" key={faq.question}>
                 <button
-                  type="button"
                   className="flex w-full items-center justify-between p-4 text-left"
                   onClick={() => setOpen(isOpen ? null : faq.question)}
+                  type="button"
                 >
                   <span className="font-medium text-sm">{faq.question}</span>
                   <ChevronDown

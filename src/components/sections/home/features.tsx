@@ -1,10 +1,11 @@
 import {
-  Layers,
+  Code2,
   type LucideIcon,
   Paintbrush,
   RefreshCw,
+  Settings,
   Shield,
-  SlidersHorizontal,
+  Zap,
 } from "lucide-react";
 
 const features: {
@@ -13,53 +14,62 @@ const features: {
   description: string;
 }[] = [
   {
-    icon: SlidersHorizontal,
-    title: "100% Configurable",
-    description: "Fine-tune every aspect with extensive configuration options.",
+    icon: Code2,
+    title: "Open Source First",
+    description:
+      "Transparent development with most projects available on GitHub.",
   },
   {
-    icon: Layers,
-    title: "Multi Configs (MC)",
-    description: "Run multiple configurations side by side with ease.",
+    icon: Zap,
+    title: "Performance Driven",
+    description: "Optimized from the ground up for speed and efficiency.",
   },
   {
     icon: Paintbrush,
     title: "Modern Design",
-    description: "Built with modern UI patterns and best practices.",
+    description:
+      "Clean interfaces built with current best practices and tooling.",
   },
   {
     icon: Shield,
-    title: "Security",
-    description: "Enterprise-grade security baked into every layer.",
+    title: "Security Focused",
+    description:
+      "Privacy-first approach with no telemetry and secure defaults.",
   },
   {
     icon: RefreshCw,
     title: "Auto Updates",
-    description: "Stay up-to-date with automatic update management.",
+    description:
+      "Seamless updates so you're always running the latest version.",
+  },
+  {
+    icon: Settings,
+    title: "Highly Configurable",
+    description: "Fine-tune every aspect to fit your exact workflow and needs.",
   },
 ];
 
 export function Features() {
   return (
     <section className="flex justify-center px-6 py-16 lg:py-24">
-      <div className="flex min-w-0 max-w-5xl flex-col items-center gap-4 text-center">
+      <div className="flex min-w-0 max-w-5xl flex-col items-center gap-6 text-center">
         <div className="space-y-2">
           <h2 className="font-bold text-2xl tracking-tight lg:text-3xl">
-            Features
+            Why VOMLabs?
           </h2>
           <p className="text-muted-foreground text-sm leading-relaxed">
-            Everything you need to build and scale.
+            What sets us apart.
           </p>
         </div>
-        <div className="grid w-full grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
+        <div className="grid w-full grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3">
           {features.map((feature) => {
             const Icon = feature.icon;
             return (
               <div
-                className="flex flex-col items-center gap-2 border border-border bg-muted p-4 text-center"
+                className="flex flex-col items-start gap-2 border border-border bg-muted p-4 text-left"
                 key={feature.title}
               >
-                <Icon className="size-5 text-foreground" />
+                <Icon className="size-5 text-primary" />
                 <div className="space-y-0.5">
                   <h3 className="font-medium text-sm">{feature.title}</h3>
                   <p className="text-muted-foreground text-xs leading-relaxed">

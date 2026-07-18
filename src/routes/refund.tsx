@@ -18,18 +18,18 @@ function RefundPage() {
           <Section title="Open Source Software">
             <p className="text-muted-foreground text-xs leading-relaxed">
               Most VOMLabs software is provided as open source and is available
-              free of charge. Because there is no monetary transaction for
-              these products, standard return and refund rights do not apply.
-              You may discontinue use at any time without penalty.
+              free of charge. Because there is no monetary transaction for these
+              products, standard return and refund rights do not apply. You may
+              discontinue use at any time without penalty.
             </p>
           </Section>
           <Section title="Commercial Licenses">
             <p className="text-muted-foreground text-xs leading-relaxed">
               If you have purchased a commercial license or paid service from
               VOMLabs and believe you are entitled to a refund, please contact
-              us within 14 days of purchase. Each request will be evaluated on
-              a case-by-case basis. Refunds are not guaranteed and are granted
-              at the sole discretion of VOMLabs.
+              us within 14 days of purchase. Each request will be evaluated on a
+              case-by-case basis. Refunds are not guaranteed and are granted at
+              the sole discretion of VOMLabs.
             </p>
           </Section>
           <Section title="Processing">
