@@ -9,10 +9,24 @@ import {
 } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 import { Toaster as Sonner, type ToasterProps } from "sonner";
+import { createLogger } from "@/lib/logger";
+
+const logger = createLogger("Toaster");
 
 const Toaster = ({ ...props }: ToasterProps) => {
+  const [mounted, setMounted] = useState(false);
   const { theme = "system" } = useTheme();
+
+  useEffect(() => {
+    setMounted(true);
+    logger.debug("Toaster mounted", { theme });
+  }, [theme]);
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <Sonner

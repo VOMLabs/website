@@ -13,9 +13,9 @@ const items: {
   },
   {
     icon: Wrench,
-    title: "Open Source Projects",
+    title: "Affordable Products",
     description:
-      "Feature-rich tools and libraries that empower developers and contribute back to the community.",
+      "High-quality, feature-rich tools and libraries offered at competitive prices.",
   },
   {
     icon: Code2,
@@ -27,7 +27,7 @@ const items: {
     icon: Terminal,
     title: "Developer Tools",
     description:
-      "Open-source resources, libraries, and tooling for the development community and beyond.",
+      "Powerful resources, libraries, and tooling for the development community and beyond.",
   },
 ];
 
@@ -40,8 +40,8 @@ export function About() {
             What is VOMLabs
           </h2>
           <p className="text-muted-foreground text-sm leading-relaxed">
-            We are a team of developers building modern software, open-source
-            tools, and developer-focused solutions.
+            We are a team of developers building high-quality, modern software
+            and developer-focused solutions at affordable prices.
           </p>
         </div>
         <div className="grid w-full grid-cols-1 gap-3 sm:grid-cols-2 lg:gap-5">

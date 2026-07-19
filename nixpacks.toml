@@ -10,15 +10,15 @@ nixPkgs = ["nodejs_22", "git"]
 [phases.install]
 dependsOn = ["setup"]
 cmds = [
-    "corepack enable",
-    "pnpm install --frozen-lockfile"
+    "curl -fsSL https://bun.sh/install | bash",
+    "bun install --frozen-lockfile"
 ]
 
 [phases.build]
 dependsOn = ["install"]
 cmds = [
-    "pnpm run build"
+    "bun run build"
 ]
 
 [start]
-cmd = "pnpm run start"
+cmd = "bun run start"

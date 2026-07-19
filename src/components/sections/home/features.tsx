@@ -15,9 +15,8 @@ const features: {
 }[] = [
   {
     icon: Code2,
-    title: "Open Source First",
-    description:
-      "Transparent development with most projects available on GitHub.",
+    title: "Affordable Pricing",
+    description: "High-quality products at prices that won't break the bank.",
   },
   {
     icon: Zap,

@@ -1,8 +1,14 @@
+"use client";
+
 import { faDiscord } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { GitFork, Handshake, type LucideIcon, Users } from "lucide-react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import { createLogger } from "@/lib/logger";
+
+const logger = createLogger("BecomeDev");
 
 const items: {
   icon: LucideIcon;
@@ -16,9 +22,9 @@ const items: {
   },
   {
     icon: GitFork,
-    title: "Open Source",
+    title: "Quality Products",
     description:
-      "Contribute to our projects on GitHub. All skill levels welcome.",
+      "Help us build high-quality, affordable tools that developers love.",
   },
   {
     icon: Handshake,
@@ -29,6 +35,13 @@ const items: {
 ];
 
 export function BecomeDev() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    logger.debug("BecomeDev section mounted");
+  }, []);
+
   return (
     <section className="flex justify-center px-6 py-16 lg:py-24">
       <div className="flex min-w-0 max-w-4xl flex-col items-center gap-6 text-center">
@@ -59,21 +72,33 @@ export function BecomeDev() {
             );
           })}
         </div>
-        <Button
-          className="bg-[#5865F2] text-white hover:bg-[#4752c4]"
-          onClick={() => {
-            toast.info("Opening Discord...", { duration: 2000 });
-            window.open(
-              "https://discord.vomlabs.com",
-              "_blank",
-              "noopener,noreferrer"
-            );
-          }}
-          variant="outline"
-        >
-          <FontAwesomeIcon icon={faDiscord} />
-          Join Discord to Apply
-        </Button>
+        {mounted && (
+          <Button
+            className="bg-[#5865F2] text-white hover:bg-[#4752c4]"
+            onClick={() => {
+              try {
+                logger.info("BecomeDev Discord button clicked", {
+                  url: "https://discord.vomlabs.com",
+                });
+                toast.info("Opening Discord...", { duration: 2000 });
+                window.open(
+                  "https://discord.vomlabs.com",
+                  "_blank",
+                  "noopener,noreferrer"
+                );
+              } catch (error) {
+                logger.error("Failed to open Discord from BecomeDev", {
+                  error: error instanceof Error ? error.message : String(error),
+                });
+                toast.error("Failed to open Discord. Please try again.");
+              }
+            }}
+            variant="outline"
+          >
+            <FontAwesomeIcon icon={faDiscord} />
+            Join Discord to Apply
+          </Button>
+        )}
       </div>
     </section>
   );

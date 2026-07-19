@@ -11,13 +11,23 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TosRouteImport } from './routes/tos'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as SignupRouteImport } from './routes/signup'
 import { Route as RefundRouteImport } from './routes/refund'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as LoginRouteImport } from './routes/login'
 import { Route as LegalRouteImport } from './routes/legal'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as DisclaimerRouteImport } from './routes/disclaimer'
 import { Route as CookiesRouteImport } from './routes/cookies'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BlogIndexRouteImport } from './routes/blog/index'
+import { Route as AdminIndexRouteImport } from './routes/admin/index'
+import { Route as AdminFaqRouteImport } from './routes/admin/faq'
+import { Route as AdminBlogsRouteImport } from './routes/admin/blogs'
+import { Route as AdminAccountsRouteImport } from './routes/admin/accounts'
+import { Route as BlogPostsIdRouteImport } from './routes/blog/posts/$id'
+import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
 
 const TosRoute = TosRouteImport.update({
   id: '/tos',
@@ -29,6 +39,11 @@ const TermsRoute = TermsRouteImport.update({
   path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SignupRoute = SignupRouteImport.update({
+  id: '/signup',
+  path: '/signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RefundRoute = RefundRouteImport.update({
   id: '/refund',
   path: '/refund',
@@ -37,6 +52,11 @@ const RefundRoute = RefundRouteImport.update({
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LegalRoute = LegalRouteImport.update({
@@ -59,22 +79,72 @@ const CookiesRoute = CookiesRouteImport.update({
   path: '/cookies',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminFaqRoute = AdminFaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminBlogsRoute = AdminBlogsRouteImport.update({
+  id: '/blogs',
+  path: '/blogs',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminAccountsRoute = AdminAccountsRouteImport.update({
+  id: '/accounts',
+  path: '/accounts',
+  getParentRoute: () => AdminRoute,
+} as any)
+const BlogPostsIdRoute = BlogPostsIdRouteImport.update({
+  id: '/blog/posts/$id',
+  path: '/blog/posts/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
+  id: '/api/auth/$',
+  path: '/api/auth/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteWithChildren
   '/cookies': typeof CookiesRoute
   '/disclaimer': typeof DisclaimerRoute
   '/faq': typeof FaqRoute
   '/legal': typeof LegalRoute
+  '/login': typeof LoginRoute
   '/privacy': typeof PrivacyRoute
   '/refund': typeof RefundRoute
+  '/signup': typeof SignupRoute
   '/terms': typeof TermsRoute
   '/tos': typeof TosRoute
+  '/admin/accounts': typeof AdminAccountsRoute
+  '/admin/blogs': typeof AdminBlogsRoute
+  '/admin/faq': typeof AdminFaqRoute
+  '/admin/': typeof AdminIndexRoute
+  '/blog/': typeof BlogIndexRoute
+  '/api/auth/$': typeof ApiAuthSplatRoute
+  '/blog/posts/$id': typeof BlogPostsIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -82,35 +152,64 @@ export interface FileRoutesByTo {
   '/disclaimer': typeof DisclaimerRoute
   '/faq': typeof FaqRoute
   '/legal': typeof LegalRoute
+  '/login': typeof LoginRoute
   '/privacy': typeof PrivacyRoute
   '/refund': typeof RefundRoute
+  '/signup': typeof SignupRoute
   '/terms': typeof TermsRoute
   '/tos': typeof TosRoute
+  '/admin/accounts': typeof AdminAccountsRoute
+  '/admin/blogs': typeof AdminBlogsRoute
+  '/admin/faq': typeof AdminFaqRoute
+  '/admin': typeof AdminIndexRoute
+  '/blog': typeof BlogIndexRoute
+  '/api/auth/$': typeof ApiAuthSplatRoute
+  '/blog/posts/$id': typeof BlogPostsIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteWithChildren
   '/cookies': typeof CookiesRoute
   '/disclaimer': typeof DisclaimerRoute
   '/faq': typeof FaqRoute
   '/legal': typeof LegalRoute
+  '/login': typeof LoginRoute
   '/privacy': typeof PrivacyRoute
   '/refund': typeof RefundRoute
+  '/signup': typeof SignupRoute
   '/terms': typeof TermsRoute
   '/tos': typeof TosRoute
+  '/admin/accounts': typeof AdminAccountsRoute
+  '/admin/blogs': typeof AdminBlogsRoute
+  '/admin/faq': typeof AdminFaqRoute
+  '/admin/': typeof AdminIndexRoute
+  '/blog/': typeof BlogIndexRoute
+  '/api/auth/$': typeof ApiAuthSplatRoute
+  '/blog/posts/$id': typeof BlogPostsIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/admin'
     | '/cookies'
     | '/disclaimer'
     | '/faq'
     | '/legal'
+    | '/login'
     | '/privacy'
     | '/refund'
+    | '/signup'
     | '/terms'
     | '/tos'
+    | '/admin/accounts'
+    | '/admin/blogs'
+    | '/admin/faq'
+    | '/admin/'
+    | '/blog/'
+    | '/api/auth/$'
+    | '/blog/posts/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -118,33 +217,58 @@ export interface FileRouteTypes {
     | '/disclaimer'
     | '/faq'
     | '/legal'
+    | '/login'
     | '/privacy'
     | '/refund'
+    | '/signup'
     | '/terms'
     | '/tos'
+    | '/admin/accounts'
+    | '/admin/blogs'
+    | '/admin/faq'
+    | '/admin'
+    | '/blog'
+    | '/api/auth/$'
+    | '/blog/posts/$id'
   id:
     | '__root__'
     | '/'
+    | '/admin'
     | '/cookies'
     | '/disclaimer'
     | '/faq'
     | '/legal'
+    | '/login'
     | '/privacy'
     | '/refund'
+    | '/signup'
     | '/terms'
     | '/tos'
+    | '/admin/accounts'
+    | '/admin/blogs'
+    | '/admin/faq'
+    | '/admin/'
+    | '/blog/'
+    | '/api/auth/$'
+    | '/blog/posts/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRouteWithChildren
   CookiesRoute: typeof CookiesRoute
   DisclaimerRoute: typeof DisclaimerRoute
   FaqRoute: typeof FaqRoute
   LegalRoute: typeof LegalRoute
+  LoginRoute: typeof LoginRoute
   PrivacyRoute: typeof PrivacyRoute
   RefundRoute: typeof RefundRoute
+  SignupRoute: typeof SignupRoute
   TermsRoute: typeof TermsRoute
   TosRoute: typeof TosRoute
+  BlogIndexRoute: typeof BlogIndexRoute
+  ApiAuthSplatRoute: typeof ApiAuthSplatRoute
+  BlogPostsIdRoute: typeof BlogPostsIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -163,6 +287,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/signup': {
+      id: '/signup'
+      path: '/signup'
+      fullPath: '/signup'
+      preLoaderRoute: typeof SignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/refund': {
       id: '/refund'
       path: '/refund'
@@ -175,6 +306,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/legal': {
@@ -205,6 +343,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CookiesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -212,19 +357,90 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/faq': {
+      id: '/admin/faq'
+      path: '/faq'
+      fullPath: '/admin/faq'
+      preLoaderRoute: typeof AdminFaqRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/blogs': {
+      id: '/admin/blogs'
+      path: '/blogs'
+      fullPath: '/admin/blogs'
+      preLoaderRoute: typeof AdminBlogsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/accounts': {
+      id: '/admin/accounts'
+      path: '/accounts'
+      fullPath: '/admin/accounts'
+      preLoaderRoute: typeof AdminAccountsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/blog/posts/$id': {
+      id: '/blog/posts/$id'
+      path: '/blog/posts/$id'
+      fullPath: '/blog/posts/$id'
+      preLoaderRoute: typeof BlogPostsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/auth/$': {
+      id: '/api/auth/$'
+      path: '/api/auth/$'
+      fullPath: '/api/auth/$'
+      preLoaderRoute: typeof ApiAuthSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface AdminRouteChildren {
+  AdminAccountsRoute: typeof AdminAccountsRoute
+  AdminBlogsRoute: typeof AdminBlogsRoute
+  AdminFaqRoute: typeof AdminFaqRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminAccountsRoute: AdminAccountsRoute,
+  AdminBlogsRoute: AdminBlogsRoute,
+  AdminFaqRoute: AdminFaqRoute,
+  AdminIndexRoute: AdminIndexRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRouteWithChildren,
   CookiesRoute: CookiesRoute,
   DisclaimerRoute: DisclaimerRoute,
   FaqRoute: FaqRoute,
   LegalRoute: LegalRoute,
+  LoginRoute: LoginRoute,
   PrivacyRoute: PrivacyRoute,
   RefundRoute: RefundRoute,
+  SignupRoute: SignupRoute,
   TermsRoute: TermsRoute,
   TosRoute: TosRoute,
+  BlogIndexRoute: BlogIndexRoute,
+  ApiAuthSplatRoute: ApiAuthSplatRoute,
+  BlogPostsIdRoute: BlogPostsIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

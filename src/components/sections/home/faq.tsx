@@ -1,49 +1,22 @@
+"use client";
+
 import { ChevronDown } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Link } from "@/components/link";
+import { createLogger } from "@/lib/logger";
 
-const faqs: {
-  question: string;
-  answer: string;
-}[] = [
-  {
-    question: "Can I contribute to VOMLabs projects?",
-    answer:
-      "Absolutely! Most of our projects are open source and we welcome contributions of all skill levels. Join our Discord to get started.",
-  },
-  {
-    question: "Can I use VOMLabs tools for commercial projects?",
-    answer:
-      "Yes, most of our tools are open source and free to use for both personal and commercial projects under the respective project licenses.",
-  },
-  {
-    question: "What languages and technologies does VOMLabs use?",
-    answer:
-      "We primarily work with C++, Java, TypeScript, and Go. We also occasionally use Rust when the use case calls for it, along with modern web frameworks and tooling.",
-  },
-  {
-    question: "Do you collect any telemetry?",
-    answer:
-      "No. We do not track any of your data. Your privacy is our priority, ensuring a safe and private development experience.",
-  },
-  {
-    question: "How often do you release updates?",
-    answer:
-      "We release updates regularly, with major versions following semantic versioning. Security patches and bug fixes are shipped as needed.",
-  },
-  {
-    question: "How do I get VOMLabs software?",
-    answer:
-      "All our software is available on GitHub. You can download releases, build from source, or use our pre-built Docker images.",
-  },
-  {
-    question: "How do I migrate from other tools?",
-    answer:
-      "We provide migration guides and documentation to help you transition smoothly from other tools to VOMLabs software.",
-  },
-];
+const logger = createLogger("Faq");
 
-export function Faq() {
+export function Faq({
+  faqs,
+}: {
+  faqs: { id: string; question: string; answer: string }[];
+}) {
   const [open, setOpen] = useState<string | null>(null);
+
+  useEffect(() => {
+    logger.debug("FAQ section mounted", { count: faqs.length });
+  }, [faqs.length]);
 
   return (
     <section className="flex justify-center px-6 py-16 lg:py-24">
@@ -51,12 +24,30 @@ export function Faq() {
         <h2 className="font-bold text-2xl tracking-tight lg:text-3xl">FAQ.</h2>
         <div className="flex w-full flex-col gap-2 text-left">
           {faqs.map((faq) => {
-            const isOpen = open === faq.question;
+            const isOpen = open === faq.id;
             return (
-              <div className="border border-border bg-muted" key={faq.question}>
+              <div className="border border-border bg-muted" key={faq.id}>
                 <button
                   className="flex w-full items-center justify-between p-4 text-left"
-                  onClick={() => setOpen(isOpen ? null : faq.question)}
+                  onClick={() => {
+                    try {
+                      const next = isOpen ? null : faq.id;
+                      logger.debug("FAQ item toggled", {
+                        id: faq.id,
+                        question: faq.question,
+                        isOpen: !isOpen,
+                      });
+                      setOpen(next);
+                    } catch (error) {
+                      logger.error("Failed to toggle FAQ item", {
+                        id: faq.id,
+                        error:
+                          error instanceof Error
+                            ? error.message
+                            : String(error),
+                      });
+                    }
+                  }}
                   type="button"
                 >
                   <span className="font-medium text-sm">{faq.question}</span>
@@ -77,12 +68,12 @@ export function Faq() {
             );
           })}
         </div>
-        <a
+        <Link
           className="text-muted-foreground text-sm underline-offset-4 hover:text-foreground hover:underline"
-          href="/faq"
+          to="/faq"
         >
           View all FAQ &rarr;
-        </a>
+        </Link>
       </div>
     </section>
   );

@@ -1,14 +1,44 @@
+"use client";
+
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
+import { createLogger } from "@/lib/logger";
+
+const logger = createLogger("ThemeToggle");
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    logger.debug("ThemeToggle mounted", { theme });
+  }, [theme]);
+
+  if (!mounted) {
+    return (
+      <Button size="icon" variant="ghost">
+        <span className="sr-only">Toggle theme</span>
+      </Button>
+    );
+  }
 
   return (
     <Button
-      onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+      onClick={() => {
+        try {
+          const next = theme === "light" ? "dark" : "light";
+          logger.info("Theme toggled", { from: theme, to: next });
+          setTheme(next);
+        } catch (error) {
+          logger.error("Failed to toggle theme", {
+            error: error instanceof Error ? error.message : String(error),
+          });
+        }
+      }}
       size="icon"
       variant="ghost"
     >

@@ -1,3 +1,5 @@
+"use client";
+
 import { faBookOpen } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -10,8 +12,12 @@ import {
   Workflow,
   Wrench,
 } from "lucide-react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import { createLogger } from "@/lib/logger";
+
+const logger = createLogger("Engineers");
 
 const items: {
   icon: LucideIcon;
@@ -26,9 +32,9 @@ const items: {
   },
   {
     icon: Box,
-    title: "Open Core",
+    title: "Quality First",
     description:
-      "Most of our tools are open source. Audit the code, contribute, or build your own forks with ease.",
+      "We deliver polished, reliable products backed by excellent support and documentation.",
   },
   {
     icon: Wrench,
@@ -63,6 +69,13 @@ const items: {
 ];
 
 export function Engineers() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    logger.debug("Engineers section mounted");
+  }, []);
+
   return (
     <section className="flex justify-center px-6 py-16 lg:py-24">
       <div className="flex min-w-0 max-w-5xl flex-col items-center gap-6 text-center">
@@ -94,19 +107,31 @@ export function Engineers() {
             );
           })}
         </div>
-        <Button
-          onClick={() => {
-            toast.info("Opening documentation...", { duration: 2000 });
-            window.open(
-              "https://docs.vomlabs.com",
-              "_blank",
-              "noopener,noreferrer"
-            );
-          }}
-        >
-          <FontAwesomeIcon icon={faBookOpen} />
-          View the Documentation
-        </Button>
+        {mounted && (
+          <Button
+            onClick={() => {
+              try {
+                logger.info("Documentation button clicked", {
+                  url: "https://docs.vomlabs.com",
+                });
+                toast.info("Opening documentation...", { duration: 2000 });
+                window.open(
+                  "https://docs.vomlabs.com",
+                  "_blank",
+                  "noopener,noreferrer"
+                );
+              } catch (error) {
+                logger.error("Failed to open documentation", {
+                  error: error instanceof Error ? error.message : String(error),
+                });
+                toast.error("Failed to open documentation. Please try again.");
+              }
+            }}
+          >
+            <FontAwesomeIcon icon={faBookOpen} />
+            View the Documentation
+          </Button>
+        )}
       </div>
     </section>
   );
