@@ -9,27 +9,29 @@ function LegalPage() {
       <div className="flex w-full max-w-2xl flex-col gap-8">
         <div className="space-y-2 text-center">
           <h1 className="font-bold text-3xl tracking-tight lg:text-4xl">
-            Legal Notice.
+            Legal Notice
           </h1>
           <p className="text-muted-foreground text-sm leading-relaxed">
-            Publisher information, disclaimers, and licensing details pursuant
-            to applicable law.
+            Publisher information and statutory disclosures pursuant to § 5
+            E-Commerce Act (ECG) and § 25 Media Act (MedienG), provided on
+            behalf of the project by Tobias Ertl.
           </p>
         </div>
+
         <div className="flex flex-col gap-6">
-          <Section title="Publisher">
+          <Section title="Publisher / Impressum">
             <div className="flex gap-2">
               <span className="shrink-0 text-muted-foreground text-xs">
-                Project Lead:
+                Project Leads:
               </span>
               <span className="text-xs">
                 <a
                   className="underline underline-offset-2 hover:text-foreground"
                   href="mailto:tobics@vomlabs.com"
                 >
-                  Tobics
+                  Tobics Ertl
                 </a>
-                ,{" "}
+                {", "}
                 <a
                   className="underline underline-offset-2 hover:text-foreground"
                   href="mailto:jakob@vomlabs.com"
@@ -41,20 +43,31 @@ function LegalPage() {
                   className="underline underline-offset-2 hover:text-foreground"
                   href="mailto:itzzmateo@vomlabs.com"
                 >
-                  Mateo
+                  Mateo Sauer
                 </a>
               </span>
             </div>
+            <Row label="Media Owner">Tobias Ertl (VOMLabs)</Row>
+            <Row label="Address">
+              Ressavarstraße 33, 8230 Hartberg, Austria
+            </Row>
             <Row external href="https://vomlabs.com" label="Website">
               vomlabs.com
-            </Row>
-            <Row href="mailto:legal@vomlabs.com" label="Legal Contact">
-              legal@vomlabs.com
             </Row>
             <Row href="mailto:support@vomlabs.com" label="Support">
               support@vomlabs.com
             </Row>
+            <Row href="mailto:legal@vomlabs.com" label="Legal Contact">
+              legal@vomlabs.com
+            </Row>
+            <Row href="tel:+436643811172" label="Phone">
+              +43 664 3811172
+            </Row>
+            <p className="mt-1 text-muted-foreground text-[11px] leading-relaxed">
+              * Legal representations, statutory compliance details, address information, and official correspondence are provided by and processed through Tobias Ertl (Tobics).
+            </p>
           </Section>
+
           <Section title="Disclaimer">
             <p className="text-muted-foreground text-xs leading-relaxed">
               Minecraft is a trademark of Microsoft Corporation and Mojang AB.
@@ -70,6 +83,7 @@ function LegalPage() {
               of the software.
             </p>
           </Section>
+
           <Section title="Telemetry">
             <p className="text-muted-foreground text-xs leading-relaxed">
               VOMLabs software may collect anonymous usage statistics to
@@ -85,6 +99,7 @@ function LegalPage() {
               .
             </p>
           </Section>
+
           <Section title="Open Source">
             <p className="text-muted-foreground text-xs leading-relaxed">
               Most VOMLabs projects and this website are open source. The source
