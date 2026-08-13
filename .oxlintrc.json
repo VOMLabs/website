@@ -1,0 +1,38 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["import", "typescript", "react", "unicorn", "oxc", "vitest"],
+  "categories": {
+    "correctness": "error",
+    "perf": "warn",
+    "style": "off",
+    "pedantic": "off"
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "es2026": true
+  },
+  "ignorePatterns": [
+    "node_modules",
+    "dist",
+    "build",
+    "coverage",
+    ".tanstack",
+    ".opencode",
+    "public",
+    "bun.lock",
+    "**/*.gen.*",
+    "**/*.generated.*"
+  ],
+  "rules": {
+    "react/react-in-jsx-scope": "off"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.test.{ts,tsx}", "**/*.spec.{ts,tsx}", "**/__tests__/**"],
+      "rules": {
+        "vitest/no-focused-tests": "error"
+      }
+    }
+  ]
+}

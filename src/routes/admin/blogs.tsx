@@ -1,16 +1,24 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { useState } from "react";
-import { toast } from "sonner";
-import { db } from "@/lib/db";
-import { blogPosts } from "@/lib/db/schema";
-import { eq } from "drizzle-orm";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { createServerFn } from "@tanstack/react-start";
 import { getRequestHeaders } from "@tanstack/react-start/server";
+import { eq } from "drizzle-orm";
+import { useState } from "react";
+import { toast } from "sonner";
+
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { Textarea } from "@/components/ui/textarea";
 import { auth } from "@/lib/auth";
+import { db } from "@/lib/db";
+import { blogPosts } from "@/lib/db/schema";
 
 const deletePost = createServerFn({ method: "POST" })
   .validator((id: string) => id)
@@ -19,7 +27,10 @@ const deletePost = createServerFn({ method: "POST" })
   });
 
 const createPost = createServerFn({ method: "POST" })
-  .validator((data: { title: string; slug: string; excerpt: string; content: string }) => data)
+  .validator(
+    (data: { title: string; slug: string; excerpt: string; content: string }) =>
+      data,
+  )
   .handler(async ({ data }) => {
     const headers = getRequestHeaders();
     const session = await auth.api.getSession({ headers });
@@ -78,13 +89,28 @@ function AdminBlogsPage() {
 
   return (
     <div className="flex flex-col gap-6">
-      <h1 className="font-bold text-2xl tracking-tight">Manage Blog Posts</h1>
-      <form className="flex flex-col gap-3 border border-border bg-muted p-4" onSubmit={handleAdd}>
+      <h1 className="text-2xl font-bold tracking-tight">Manage Blog Posts</h1>
+      <form
+        className="border-border bg-muted flex flex-col gap-3 border p-4"
+        onSubmit={handleAdd}
+      >
         <div className="grid gap-3 md:grid-cols-2">
-          <Input onChange={(e) => setTitle(e.target.value)} placeholder="Title" value={title} />
-          <Input onChange={(e) => setSlug(e.target.value)} placeholder="slug" value={slug} />
+          <Input
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="Title"
+            value={title}
+          />
+          <Input
+            onChange={(e) => setSlug(e.target.value)}
+            placeholder="slug"
+            value={slug}
+          />
         </div>
-        <Input onChange={(e) => setExcerpt(e.target.value)} placeholder="Excerpt" value={excerpt} />
+        <Input
+          onChange={(e) => setExcerpt(e.target.value)}
+          placeholder="Excerpt"
+          value={excerpt}
+        />
         <Textarea
           className="min-h-[120px]"
           onChange={(e) => setContent(e.target.value)}
@@ -107,11 +133,25 @@ function AdminBlogsPage() {
         <TableBody>
           {posts.map((post) => (
             <TableRow key={post.id}>
-              <TableCell className="font-medium">{post.title}</TableCell>
-              <TableCell className="text-muted-foreground text-sm">/{post.slug}</TableCell>
+              <TableCell
+                className="max-w-[280px] truncate font-medium"
+                title={post.title}
+              >
+                {post.title}
+              </TableCell>
+              <TableCell
+                className="text-muted-foreground max-w-[160px] truncate text-sm"
+                title={`/${post.slug}`}
+              >
+                /{post.slug}
+              </TableCell>
               <TableCell>{post.published ? "Yes" : "No"}</TableCell>
               <TableCell>
-                <Button onClick={() => handleDelete(post.id)} size="sm" variant="destructive">
+                <Button
+                  onClick={() => handleDelete(post.id)}
+                  size="sm"
+                  variant="destructive"
+                >
                   Delete
                 </Button>
               </TableCell>

@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Search } from "lucide-react";
 import { parseAsString, useQueryState } from "nuqs";
+
 import { db } from "@/lib/db";
 import { faqs } from "@/lib/db/schema";
 
@@ -42,7 +43,7 @@ function FaqPage() {
     <main className="flex flex-col items-center px-6 py-24">
       <div className="flex w-full max-w-2xl flex-col items-center gap-8">
         <div className="space-y-2 text-center">
-          <h1 className="font-bold text-3xl tracking-tight lg:text-4xl">
+          <h1 className="text-3xl font-bold tracking-tight lg:text-4xl">
             FAQ.
           </h1>
           <p className="text-muted-foreground text-sm leading-relaxed">
@@ -50,9 +51,9 @@ function FaqPage() {
           </p>
         </div>
         <div className="relative w-full">
-          <Search className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
+          <Search className="text-muted-foreground pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2" />
           <input
-            className="h-9 w-full border border-border bg-muted pr-3 pl-9 text-sm outline-none placeholder:text-muted-foreground focus:border-ring"
+            className="border-border bg-muted placeholder:text-muted-foreground focus:border-ring h-9 w-full border pr-3 pl-9 text-sm outline-none"
             onChange={(e) => setQuery(e.target.value || null)}
             placeholder="Search questions..."
             type="text"
@@ -61,16 +62,13 @@ function FaqPage() {
         </div>
         <div className="flex w-full flex-col gap-2 text-left">
           {filtered.length === 0 ? (
-            <p className="py-8 text-center text-muted-foreground text-sm">
+            <p className="text-muted-foreground py-8 text-center text-sm">
               No results found for &quot;{query}&quot;
             </p>
           ) : (
             filtered.map((faq) => (
-              <div
-                className="border border-border bg-muted p-4"
-                key={faq.id}
-              >
-                <p className="mb-1 font-medium text-sm">{faq.question}</p>
+              <div className="border-border bg-muted border p-4" key={faq.id}>
+                <p className="mb-1 text-sm font-medium">{faq.question}</p>
                 <p className="text-muted-foreground text-xs leading-relaxed">
                   {faq.answer}
                 </p>

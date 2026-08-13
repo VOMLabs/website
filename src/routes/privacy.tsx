@@ -7,7 +7,7 @@ function PrivacyPage() {
     <main className="flex flex-col items-center px-6 py-24">
       <div className="flex w-full max-w-2xl flex-col gap-8">
         <div className="space-y-2 text-center">
-          <h1 className="font-bold text-3xl tracking-tight lg:text-4xl">
+          <h1 className="text-3xl font-bold tracking-tight lg:text-4xl">
             Privacy Policy.
           </h1>
           <p className="text-muted-foreground text-sm leading-relaxed">
@@ -23,20 +23,20 @@ function PrivacyPage() {
             </p>
           </Section>
           <Section title="Data Collection">
-            <h3 className="font-medium text-xs">Anonymous Usage Statistics</h3>
+            <h3 className="text-xs font-medium">Anonymous Usage Statistics</h3>
             <p className="text-muted-foreground text-xs leading-relaxed">
               Certain VOMLabs plugins may transmit anonymous usage statistics
               via FastStats. This data is limited to non-personal information
               such as plugin version and server platform, and is used solely to
               understand software adoption and guide development efforts.
             </p>
-            <h3 className="font-medium text-xs">No Personal Tracking</h3>
+            <h3 className="text-xs font-medium">No Personal Tracking</h3>
             <p className="text-muted-foreground text-xs leading-relaxed">
               VOMLabs does not track personal data, browsing behavior on this
               website, or individual player information. We do not use cookies,
               analytics scripts, or similar tracking mechanisms on this website.
             </p>
-            <h3 className="font-medium text-xs">Opt-Out Policy</h3>
+            <h3 className="text-xs font-medium">Opt-Out Policy</h3>
             <p className="text-muted-foreground text-xs leading-relaxed">
               Anonymous usage statistics collection is enabled by default in
               plugins that implement it. Where supported, this feature may be
@@ -60,7 +60,7 @@ function PrivacyPage() {
             <p className="text-muted-foreground text-xs leading-relaxed">
               For privacy-related inquiries, please contact us at:{" "}
               <a
-                className="underline underline-offset-2 hover:text-foreground"
+                className="hover:text-foreground underline underline-offset-2"
                 href="mailto:privacy@vomlabs.com"
               >
                 privacy@vomlabs.com
@@ -82,8 +82,8 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <div className="border border-border bg-muted p-4 transition-colors duration-150 hover:border-foreground/20">
-      <h2 className="mb-3 font-semibold text-sm">{title}</h2>
+    <div className="border-border bg-muted hover:border-foreground/20 border p-4 transition-colors duration-150">
+      <h2 className="mb-3 text-sm font-semibold">{title}</h2>
       <div className="flex flex-col gap-2">{children}</div>
     </div>
   );

@@ -7,7 +7,7 @@ function RefundPage() {
     <main className="flex flex-col items-center px-6 py-24">
       <div className="flex w-full max-w-2xl flex-col gap-8">
         <div className="space-y-2 text-center">
-          <h1 className="font-bold text-3xl tracking-tight lg:text-4xl">
+          <h1 className="text-3xl font-bold tracking-tight lg:text-4xl">
             Return and Refund Policy.
           </h1>
           <p className="text-muted-foreground text-sm leading-relaxed">
@@ -44,7 +44,7 @@ function RefundPage() {
             <p className="text-muted-foreground text-xs leading-relaxed">
               For return and refund inquiries, contact us at:{" "}
               <a
-                className="underline underline-offset-2 hover:text-foreground"
+                className="hover:text-foreground underline underline-offset-2"
                 href="mailto:support@vomlabs.com"
               >
                 support@vomlabs.com
@@ -66,8 +66,8 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <div className="border border-border bg-muted p-4 transition-colors duration-150 hover:border-foreground/20">
-      <h2 className="mb-3 font-semibold text-sm">{title}</h2>
+    <div className="border-border bg-muted hover:border-foreground/20 border p-4 transition-colors duration-150">
+      <h2 className="mb-3 text-sm font-semibold">{title}</h2>
       <div className="flex flex-col gap-2">{children}</div>
     </div>
   );

@@ -1,17 +1,28 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createServerFn } from "@tanstack/react-start";
+import { eq } from "drizzle-orm";
 import { toast } from "sonner";
+
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { db } from "@/lib/db";
 import { users } from "@/lib/db/schema";
-import { eq } from "drizzle-orm";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { createServerFn } from "@tanstack/react-start";
 
 const setRole = createServerFn({ method: "POST" })
   .validator((data: { userId: string; role: string }) => data)
   .handler(async ({ data }) => {
-    await db.update(users).set({ role: data.role }).where(eq(users.id, data.userId));
+    await db
+      .update(users)
+      .set({ role: data.role })
+      .where(eq(users.id, data.userId));
   });
 
 export const Route = createFileRoute("/admin/accounts")({
@@ -39,7 +50,7 @@ function AdminAccountsPage() {
 
   return (
     <div className="flex flex-col gap-6">
-      <h1 className="font-bold text-2xl tracking-tight">Manage Accounts</h1>
+      <h1 className="text-2xl font-bold tracking-tight">Manage Accounts</h1>
       <Table>
         <TableHeader>
           <TableRow>
@@ -53,16 +64,34 @@ function AdminAccountsPage() {
         <TableBody>
           {accounts.map((account) => (
             <TableRow key={account.id}>
-              <TableCell className="font-medium">{account.name}</TableCell>
-              <TableCell className="text-muted-foreground text-sm">{account.email}</TableCell>
-              <TableCell className="text-muted-foreground text-sm">{account.username ?? "\u2014"}</TableCell>
+              <TableCell
+                className="max-w-[200px] truncate font-medium"
+                title={account.name}
+              >
+                {account.name}
+              </TableCell>
+              <TableCell
+                className="text-muted-foreground max-w-[260px] truncate text-sm"
+                title={account.email}
+              >
+                {account.email}
+              </TableCell>
+              <TableCell className="text-muted-foreground max-w-[160px] truncate text-sm">
+                {account.username ?? "\u2014"}
+              </TableCell>
               <TableCell>
-                <Badge variant={account.role === "admin" ? "default" : "secondary"}>
+                <Badge
+                  variant={account.role === "admin" ? "default" : "secondary"}
+                >
                   {account.role ?? "user"}
                 </Badge>
               </TableCell>
               <TableCell>
-                <Button onClick={() => handleRoleToggle(account.id, account.role)} size="sm" variant="outline">
+                <Button
+                  onClick={() => handleRoleToggle(account.id, account.role)}
+                  size="sm"
+                  variant="outline"
+                >
                   Toggle Admin
                 </Button>
               </TableCell>

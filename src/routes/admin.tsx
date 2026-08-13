@@ -1,5 +1,11 @@
-import { createFileRoute, Link, Outlet, redirect } from "@tanstack/react-router";
-import { getSession } from "@/lib/auth-utils";
+import {
+  createFileRoute,
+  Link,
+  Outlet,
+  redirect,
+} from "@tanstack/react-router";
+
+import { Separator } from "@/components/ui/separator";
 import {
   Sidebar,
   SidebarContent,
@@ -14,7 +20,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { Separator } from "@/components/ui/separator";
+import { getSession } from "@/lib/auth-utils";
 
 export const Route = createFileRoute("/admin")({
   beforeLoad: async () => {
@@ -43,8 +49,8 @@ function AdminLayout() {
       <Sidebar>
         <SidebarHeader>
           <Link className="flex items-center gap-2 px-2" to="/">
-            <span className="size-1.5 bg-primary" />
-            <span className="font-bold text-sm">VOMLabs Admin</span>
+            <span className="bg-primary size-1.5" />
+            <span className="text-sm font-bold">VOMLabs Admin</span>
           </Link>
         </SidebarHeader>
         <SidebarContent>
@@ -65,7 +71,7 @@ function AdminLayout() {
         </SidebarContent>
       </Sidebar>
       <SidebarInset>
-        <header className="flex h-12 items-center gap-2 border-border border-b px-4">
+        <header className="border-border flex h-12 items-center gap-2 border-b px-4">
           <SidebarTrigger />
           <Separator className="h-6" orientation="vertical" />
           <span className="text-muted-foreground text-sm">Admin Dashboard</span>

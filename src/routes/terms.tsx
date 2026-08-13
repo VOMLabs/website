@@ -7,7 +7,7 @@ function TermsPage() {
     <main className="flex flex-col items-center px-6 py-24">
       <div className="flex w-full max-w-2xl flex-col gap-8">
         <div className="space-y-2 text-center">
-          <h1 className="font-bold text-3xl tracking-tight lg:text-4xl">
+          <h1 className="text-3xl font-bold tracking-tight lg:text-4xl">
             Terms of Use.
           </h1>
           <p className="text-muted-foreground text-sm leading-relaxed">
@@ -42,7 +42,7 @@ function TermsPage() {
             <p className="text-muted-foreground text-xs leading-relaxed">
               You agree not to:
             </p>
-            <ul className="flex list-none flex-col gap-1.5 text-muted-foreground text-xs">
+            <ul className="text-muted-foreground flex list-none flex-col gap-1.5 text-xs">
               <li>
                 Use VOMLabs software for any illegal or unauthorized purpose.
               </li>
@@ -78,7 +78,7 @@ function TermsPage() {
               consequential, arising out of or in connection with your use of or
               inability to use VOMLabs software, including but not limited to:
             </p>
-            <ul className="flex list-none flex-col gap-1.5 text-muted-foreground text-xs">
+            <ul className="text-muted-foreground flex list-none flex-col gap-1.5 text-xs">
               <li>Loss of data or corruption of data.</li>
               <li>Business interruption.</li>
               <li>Indirect or consequential damages of any kind.</li>
@@ -93,7 +93,7 @@ function TermsPage() {
               of their respective owners. Most VOMLabs software and this website
               are open source. The source code and licenses are available on{" "}
               <a
-                className="underline underline-offset-2 hover:text-foreground"
+                className="hover:text-foreground underline underline-offset-2"
                 href="https://github.com/vomlabs"
                 rel="noopener noreferrer"
                 target="_blank"
@@ -124,7 +124,7 @@ function TermsPage() {
               For questions or concerns regarding these Terms, please contact us
               at:{" "}
               <a
-                className="underline underline-offset-2 hover:text-foreground"
+                className="hover:text-foreground underline underline-offset-2"
                 href="mailto:legal@vomlabs.com"
               >
                 legal@vomlabs.com
@@ -146,8 +146,8 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <div className="border border-border bg-muted p-4 transition-colors duration-150 hover:border-foreground/20">
-      <h2 className="mb-3 font-semibold text-sm">{title}</h2>
+    <div className="border-border bg-muted hover:border-foreground/20 border p-4 transition-colors duration-150">
+      <h2 className="mb-3 text-sm font-semibold">{title}</h2>
       <div className="flex flex-col gap-2">{children}</div>
     </div>
   );

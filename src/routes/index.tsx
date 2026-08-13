@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { desc } from "drizzle-orm";
+
 import { About } from "@/components/sections/home/about";
 import { BecomeDev } from "@/components/sections/home/become-dev";
 import { Engineers } from "@/components/sections/home/engineers";

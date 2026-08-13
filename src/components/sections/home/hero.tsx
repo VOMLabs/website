@@ -4,6 +4,7 @@ import { faDiscord, faGithub } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
+
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -41,22 +42,22 @@ export function Hero() {
 
   return (
     <section className="flex min-h-dvh flex-col items-center justify-center px-6">
-      <div className="flex min-w-0 max-w-2xl flex-col items-center gap-6 text-center">
-        <div className="inline-flex items-center gap-1.5 border border-border bg-muted px-3 py-1">
-          <span className="size-1.5 bg-primary" />
-          <span className="font-medium text-muted-foreground text-xs">
+      <div className="flex max-w-2xl min-w-0 flex-col items-center gap-6 text-center">
+        <div className="border-border bg-muted inline-flex items-center gap-1.5 border px-3 py-1">
+          <span className="bg-primary size-1.5" />
+          <span className="text-muted-foreground text-xs font-medium">
             Building the future of developer tools
           </span>
         </div>
         <div className="space-y-3">
-          <h1 className="font-bold text-5xl tracking-tight lg:text-6xl xl:text-7xl">
+          <h1 className="text-5xl font-bold tracking-tight lg:text-6xl xl:text-7xl">
             VOMLabs
           </h1>
-          <h2 className="font-medium text-muted-foreground text-xl lg:text-2xl xl:text-3xl">
+          <h2 className="text-muted-foreground text-xl font-medium lg:text-2xl xl:text-3xl">
             Modern software, built by developers, for developers.
           </h2>
         </div>
-        <p className="max-w-md text-muted-foreground text-sm leading-relaxed">
+        <p className="text-muted-foreground max-w-md text-sm leading-relaxed">
           We create high-performance tools, premium libraries, and
           developer-focused solutions — crafted with care and built to last.
         </p>
@@ -85,7 +86,7 @@ export function Hero() {
                 <div className="flex flex-col gap-2 pt-2">
                   {githubOrgs.map((org) => (
                     <a
-                      className="flex items-center gap-3 border border-border bg-muted p-3 transition-colors hover:bg-accent"
+                      className="border-border bg-muted hover:bg-accent flex items-center gap-3 border p-3 transition-colors"
                       href={org.url}
                       key={org.name}
                       onClick={() => {
@@ -113,7 +114,7 @@ export function Hero() {
                     >
                       <FontAwesomeIcon className="size-5" icon={faGithub} />
                       <div className="flex flex-col text-left">
-                        <span className="font-medium text-sm">{org.name}</span>
+                        <span className="text-sm font-medium">{org.name}</span>
                         <span className="text-muted-foreground text-xs">
                           {org.description}
                         </span>
@@ -134,7 +135,7 @@ export function Hero() {
                   window.open(
                     "https://discord.vomlabs.com",
                     "_blank",
-                    "noopener,noreferrer"
+                    "noopener,noreferrer",
                   );
                 } catch (error) {
                   logger.error("Failed to open Discord", {

@@ -23,7 +23,7 @@ function formatMessage(
   level: LogLevel,
   context: string,
   message: string,
-  data?: Record<string, unknown>
+  data?: Record<string, unknown>,
 ): string {
   const prefix = `[${timestamp()}] [${level.toUpperCase()}] [${context}]`;
   if (data !== undefined) {

@@ -1,8 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { eq, desc } from "drizzle-orm";
+
+import { Link } from "@/components/link";
 import { db } from "@/lib/db";
 import { blogPosts, users } from "@/lib/db/schema";
-import { eq, desc } from "drizzle-orm";
-import { Link } from "@/components/link";
 
 export const Route = createFileRoute("/blog/")({
   loader: async () => {
@@ -30,29 +31,31 @@ function BlogPage() {
     <main className="flex flex-col items-center px-6 py-24">
       <div className="flex w-full max-w-2xl flex-col items-center gap-8">
         <div className="space-y-2 text-center">
-          <h1 className="font-bold text-3xl tracking-tight lg:text-4xl">Blog</h1>
+          <h1 className="text-3xl font-bold tracking-tight lg:text-4xl">
+            Blog
+          </h1>
           <p className="text-muted-foreground text-sm leading-relaxed">
             Updates, announcements, and articles from VOMLabs.
           </p>
         </div>
         <div className="flex w-full flex-col gap-4">
           {posts.length === 0 ? (
-            <p className="py-8 text-center text-muted-foreground text-sm">
+            <p className="text-muted-foreground py-8 text-center text-sm">
               No blog posts yet. Check back soon!
             </p>
           ) : (
             posts.map((post) => (
               <Link
-                className="block border border-border bg-muted p-6 transition-colors hover:bg-accent"
+                className="border-border bg-muted hover:bg-accent block border p-6 transition-colors"
                 key={post.id}
                 to="/blog/posts/$id"
                 params={{ id: post.id }}
               >
-                <h2 className="mb-2 font-medium text-lg">{post.title}</h2>
-                <p className="mb-3 text-muted-foreground text-sm leading-relaxed">
+                <h2 className="mb-2 text-lg font-medium">{post.title}</h2>
+                <p className="text-muted-foreground mb-3 text-sm leading-relaxed">
                   {post.excerpt}
                 </p>
-                <div className="flex items-center gap-2 text-muted-foreground text-xs">
+                <div className="text-muted-foreground flex items-center gap-2 text-xs">
                   <span>{post.authorName}</span>
                   <span>&middot;</span>
                   <span>

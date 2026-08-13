@@ -1,4 +1,5 @@
 import { Component, type ErrorInfo, type ReactNode } from "react";
+
 import { createLogger } from "@/lib/logger";
 
 const logger = createLogger("ErrorBoundary");
@@ -38,9 +39,9 @@ export class ErrorBoundary extends Component<Props, State> {
       }
 
       return (
-        <div className="flex flex-col items-center justify-center gap-4 border border-border bg-muted px-6 py-12 text-center">
+        <div className="border-border bg-muted flex flex-col items-center justify-center gap-4 border px-6 py-12 text-center">
           <div className="space-y-2">
-            <h2 className="font-bold text-foreground text-lg">
+            <h2 className="text-foreground text-lg font-bold">
               Something went wrong
             </h2>
             <p className="text-muted-foreground text-sm leading-relaxed">
@@ -48,7 +49,7 @@ export class ErrorBoundary extends Component<Props, State> {
             </p>
           </div>
           <button
-            className="inline-flex h-8 shrink-0 select-none items-center justify-center gap-1.5 border border-transparent bg-primary px-2.5 font-medium text-primary-foreground text-xs outline-none transition-all hover:bg-primary/80"
+            className="bg-primary text-primary-foreground hover:bg-primary/80 inline-flex h-8 shrink-0 items-center justify-center gap-1.5 border border-transparent px-2.5 text-xs font-medium transition-all outline-none select-none"
             onClick={() => {
               this.setState({ hasError: false, error: null });
               window.location.reload();

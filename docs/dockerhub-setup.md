@@ -91,12 +91,7 @@ To ensure zero-downtime and automatic rollback if a build fails:
 2. **Health Check**: Paste the following JSON block to query the `/` endpoint:
    ```json
    {
-     "Test": [
-       "CMD",
-       "curl",
-       "-f",
-       "http://localhost:3000/"
-     ],
+     "Test": ["CMD", "curl", "-f", "http://localhost:3000/"],
      "Interval": 30000000000,
      "Timeout": 10000000000,
      "StartPeriod": 30000000000,

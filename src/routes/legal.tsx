@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+
 import { Link } from "@/components/link";
 
 export const Route = createFileRoute("/legal")({ component: LegalPage });
@@ -8,7 +9,7 @@ function LegalPage() {
     <main className="flex flex-col items-center px-6 py-24">
       <div className="flex w-full max-w-2xl flex-col gap-8">
         <div className="space-y-2 text-center">
-          <h1 className="font-bold text-3xl tracking-tight lg:text-4xl">
+          <h1 className="text-3xl font-bold tracking-tight lg:text-4xl">
             Legal Notice
           </h1>
           <p className="text-muted-foreground text-sm leading-relaxed">
@@ -21,26 +22,26 @@ function LegalPage() {
         <div className="flex flex-col gap-6">
           <Section title="Publisher / Impressum">
             <div className="flex gap-2">
-              <span className="shrink-0 text-muted-foreground text-xs">
+              <span className="text-muted-foreground shrink-0 text-xs">
                 Project Leads:
               </span>
               <span className="text-xs">
                 <a
-                  className="underline underline-offset-2 hover:text-foreground"
+                  className="hover:text-foreground underline underline-offset-2"
                   href="mailto:tobics@vomlabs.com"
                 >
                   Tobics Ertl
                 </a>
                 {", "}
                 <a
-                  className="underline underline-offset-2 hover:text-foreground"
+                  className="hover:text-foreground underline underline-offset-2"
                   href="mailto:jakob@vomlabs.com"
                 >
                   Jakob
                 </a>
                 {" & "}
                 <a
-                  className="underline underline-offset-2 hover:text-foreground"
+                  className="hover:text-foreground underline underline-offset-2"
                   href="mailto:itzzmateo@vomlabs.com"
                 >
                   Mateo Sauer
@@ -48,9 +49,7 @@ function LegalPage() {
               </span>
             </div>
             <Row label="Media Owner">Tobias Ertl (VOMLabs)</Row>
-            <Row label="Address">
-              Ressavarstraße 33, 8230 Hartberg, Austria
-            </Row>
+            <Row label="Address">Ressavarstraße 33, 8230 Hartberg, Austria</Row>
             <Row external href="https://vomlabs.com" label="Website">
               vomlabs.com
             </Row>
@@ -63,8 +62,10 @@ function LegalPage() {
             <Row href="tel:+436643811172" label="Phone">
               +43 664 3811172
             </Row>
-            <p className="mt-1 text-muted-foreground text-[11px] leading-relaxed">
-              * Legal representations, statutory compliance details, address information, and official correspondence are provided by and processed through Tobias Ertl (Tobics).
+            <p className="text-muted-foreground mt-1 text-[11px] leading-relaxed">
+              * Legal representations, statutory compliance details, address
+              information, and official correspondence are provided by and
+              processed through Tobias Ertl (Tobics).
             </p>
           </Section>
 
@@ -91,7 +92,7 @@ function LegalPage() {
               personally identifiable information is gathered through this
               telemetry. For further information, please refer to our{" "}
               <Link
-                className="underline underline-offset-2 hover:text-foreground"
+                className="hover:text-foreground underline underline-offset-2"
                 to="/privacy"
               >
                 Privacy Policy
@@ -105,7 +106,7 @@ function LegalPage() {
               Most VOMLabs projects and this website are open source. The source
               code and applicable licenses can be accessed on{" "}
               <a
-                className="underline underline-offset-2 hover:text-foreground"
+                className="hover:text-foreground underline underline-offset-2"
                 href="https://github.com/vomlabs"
                 rel="noopener noreferrer"
                 target="_blank"
@@ -129,8 +130,8 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <div className="border border-border bg-muted p-4 transition-colors duration-150 hover:border-foreground/20">
-      <h2 className="mb-3 font-semibold text-sm">{title}</h2>
+    <div className="border-border bg-muted hover:border-foreground/20 border p-4 transition-colors duration-150">
+      <h2 className="mb-3 text-sm font-semibold">{title}</h2>
       <div className="flex flex-col gap-2">{children}</div>
     </div>
   );
@@ -149,7 +150,7 @@ function Row({
 }) {
   const content = href ? (
     <a
-      className="underline underline-offset-2 hover:text-foreground"
+      className="hover:text-foreground underline underline-offset-2"
       href={href}
       rel={external ? "noopener noreferrer" : undefined}
       target={external ? "_blank" : undefined}
@@ -161,7 +162,7 @@ function Row({
   );
   return (
     <div className="flex gap-2">
-      <span className="shrink-0 text-muted-foreground text-xs">{label}:</span>
+      <span className="text-muted-foreground shrink-0 text-xs">{label}:</span>
       <span className="text-xs">{content}</span>
     </div>
   );

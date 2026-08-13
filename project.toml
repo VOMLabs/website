@@ -6,11 +6,7 @@ name = "VOMLabs Website"
 version = "1.0.0"
 
 [build]
-exclude = [
-  "/.git",
-  "/node_modules",
-  "/dist"
-]
+exclude = ["/.git", "/node_modules", "/dist"]
 
 [[build.env]]
 name = "BP_NODE_VERSION"

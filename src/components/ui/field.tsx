@@ -1,5 +1,6 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import { useMemo } from "react";
+
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
@@ -9,7 +10,7 @@ function FieldSet({ className, ...props }: React.ComponentProps<"fieldset">) {
     <fieldset
       className={cn(
         "flex flex-col gap-4 has-[>[data-slot=checkbox-group]]:gap-3 has-[>[data-slot=radio-group]]:gap-3",
-        className
+        className,
       )}
       data-slot="field-set"
       {...props}
@@ -26,7 +27,7 @@ function FieldLegend({
     <legend
       className={cn(
         "mb-2.5 font-medium data-[variant=label]:text-xs data-[variant=legend]:text-sm",
-        className
+        className,
       )}
       data-slot="field-legend"
       data-variant={variant}
@@ -40,7 +41,7 @@ function FieldGroup({ className, ...props }: React.ComponentProps<"div">) {
     <div
       className={cn(
         "group/field-group @container/field-group flex w-full flex-col gap-5 data-[slot=checkbox-group]:gap-3 *:data-[slot=field-group]:gap-4",
-        className
+        className,
       )}
       data-slot="field-group"
       {...props}
@@ -63,7 +64,7 @@ const fieldVariants = cva(
     defaultVariants: {
       orientation: "vertical",
     },
-  }
+  },
 );
 
 function Field({
@@ -87,7 +88,7 @@ function FieldContent({ className, ...props }: React.ComponentProps<"div">) {
     <div
       className={cn(
         "group/field-content flex flex-1 flex-col gap-0.5 leading-snug",
-        className
+        className,
       )}
       data-slot="field-content"
       {...props}
@@ -104,7 +105,7 @@ function FieldLabel({
       className={cn(
         "group/field-label peer/field-label flex w-fit gap-2 leading-snug has-[>[data-slot=field]]:rounded-none has-[>[data-slot=field]]:border has-data-checked:border-primary/30 has-data-checked:bg-primary/5 *:data-[slot=field]:p-2 group-data-[disabled=true]/field:opacity-50 dark:has-data-checked:border-primary/20 dark:has-data-checked:bg-primary/10",
         "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col",
-        className
+        className,
       )}
       data-slot="field-label"
       {...props}
@@ -117,7 +118,7 @@ function FieldTitle({ className, ...props }: React.ComponentProps<"div">) {
     <div
       className={cn(
         "flex w-fit items-center gap-2 text-xs/relaxed group-data-[disabled=true]/field:opacity-50",
-        className
+        className,
       )}
       data-slot="field-label"
       {...props}
@@ -132,7 +133,7 @@ function FieldDescription({ className, ...props }: React.ComponentProps<"p">) {
         "text-left font-normal text-muted-foreground text-xs/relaxed leading-normal group-has-data-horizontal/field:text-balance [[data-variant=legend]+&]:-mt-1.5",
         "nth-last-2:-mt-1 last:mt-0",
         "[&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4",
-        className
+        className,
       )}
       data-slot="field-description"
       {...props}
@@ -151,7 +152,7 @@ function FieldSeparator({
     <div
       className={cn(
         "relative -my-2 h-5 text-xs group-data-[variant=outline]/field-group:-mb-2",
-        className
+        className,
       )}
       data-content={!!children}
       data-slot="field-separator"
@@ -160,7 +161,7 @@ function FieldSeparator({
       <Separator className="absolute inset-0 top-1/2" />
       {children && (
         <span
-          className="relative mx-auto block w-fit bg-background px-2 text-muted-foreground"
+          className="bg-background text-muted-foreground relative mx-auto block w-fit px-2"
           data-slot="field-separator-content"
         >
           {children}
@@ -198,8 +199,8 @@ function FieldError({
     return (
       <ul className="ml-4 flex list-disc flex-col gap-1">
         {uniqueErrors.map(
-          (error, index) =>
-            error?.message && <li key={index}>{error.message}</li>
+          (error) =>
+            error?.message && <li key={error.message}>{error.message}</li>,
         )}
       </ul>
     );

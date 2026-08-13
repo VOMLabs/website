@@ -4,6 +4,7 @@ import { SearchIcon, Tick02Icon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { Command as CommandPrimitive } from "cmdk";
 import type * as React from "react";
+
 import {
   Dialog,
   DialogContent,
@@ -22,7 +23,7 @@ function Command({
     <CommandPrimitive
       className={cn(
         "flex size-full flex-col overflow-hidden rounded-none bg-popover text-popover-foreground",
-        className
+        className,
       )}
       data-slot="command"
       {...props}
@@ -53,7 +54,7 @@ function CommandDialog({
       <DialogContent
         className={cn(
           "top-1/3 translate-y-0 overflow-hidden rounded-none p-0",
-          className
+          className,
         )}
         showCloseButton={showCloseButton}
       >
@@ -69,11 +70,11 @@ function CommandInput({
 }: React.ComponentProps<typeof CommandPrimitive.Input>) {
   return (
     <div className="border-b pb-0" data-slot="command-input-wrapper">
-      <InputGroup className="h-8 border-input/30 border-none bg-input/30 shadow-none! *:data-[slot=input-group-addon]:pl-2!">
+      <InputGroup className="border-input/30 bg-input/30 h-8 border-none shadow-none! *:data-[slot=input-group-addon]:pl-2!">
         <CommandPrimitive.Input
           className={cn(
             "w-full text-xs outline-hidden disabled:cursor-not-allowed disabled:opacity-50",
-            className
+            className,
           )}
           data-slot="command-input"
           {...props}
@@ -98,7 +99,7 @@ function CommandList({
     <CommandPrimitive.List
       className={cn(
         "no-scrollbar max-h-72 scroll-py-0 overflow-y-auto overflow-x-hidden outline-none",
-        className
+        className,
       )}
       data-slot="command-list"
       {...props}
@@ -127,7 +128,7 @@ function CommandGroup({
     <CommandPrimitive.Group
       className={cn(
         "overflow-hidden text-foreground **:[[cmdk-group-heading]]:px-2 **:[[cmdk-group-heading]]:py-1.5 **:[[cmdk-group-heading]]:text-muted-foreground **:[[cmdk-group-heading]]:text-xs",
-        className
+        className,
       )}
       data-slot="command-group"
       {...props}
@@ -157,7 +158,7 @@ function CommandItem({
     <CommandPrimitive.Item
       className={cn(
         "group/command-item relative flex cursor-default select-none items-center gap-2 in-data-[slot=dialog-content]:rounded-none! rounded-none px-2 py-2 text-xs outline-hidden data-[disabled=true]:pointer-events-none data-selected:bg-muted data-selected:text-foreground data-[disabled=true]:opacity-50 [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0 data-selected:*:[svg]:text-foreground",
-        className
+        className,
       )}
       data-slot="command-item"
       {...props}
@@ -180,7 +181,7 @@ function CommandShortcut({
     <span
       className={cn(
         "ml-auto text-muted-foreground text-xs tracking-widest group-data-selected/command-item:text-foreground",
-        className
+        className,
       )}
       data-slot="command-shortcut"
       {...props}

@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
+
 import { Button } from "@/components/ui/button";
 import { createLogger } from "@/lib/logger";
 
@@ -78,9 +79,9 @@ export function Engineers() {
 
   return (
     <section className="flex justify-center px-6 py-16 lg:py-24">
-      <div className="flex min-w-0 max-w-5xl flex-col items-center gap-6 text-center">
+      <div className="flex max-w-5xl min-w-0 flex-col items-center gap-6 text-center">
         <div className="space-y-2">
-          <h2 className="font-bold text-2xl tracking-tight lg:text-3xl">
+          <h2 className="text-2xl font-bold tracking-tight lg:text-3xl">
             Built for Engineers
           </h2>
           <p className="text-muted-foreground text-sm leading-relaxed">
@@ -93,12 +94,12 @@ export function Engineers() {
             const Icon = item.icon;
             return (
               <div
-                className="flex flex-col items-center gap-2 border border-border bg-muted p-4 text-center"
+                className="border-border bg-muted flex flex-col items-center gap-2 border p-4 text-center"
                 key={item.title}
               >
-                <Icon className="size-5 text-primary" />
+                <Icon className="text-primary size-5" />
                 <div className="space-y-0.5">
-                  <h3 className="font-medium text-sm">{item.title}</h3>
+                  <h3 className="text-sm font-medium">{item.title}</h3>
                   <p className="text-muted-foreground text-xs leading-relaxed">
                     {item.description}
                   </p>
@@ -118,7 +119,7 @@ export function Engineers() {
                 window.open(
                   "https://docs.vomlabs.com",
                   "_blank",
-                  "noopener,noreferrer"
+                  "noopener,noreferrer",
                 );
               } catch (error) {
                 logger.error("Failed to open documentation", {

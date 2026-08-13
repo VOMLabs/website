@@ -6,6 +6,7 @@ import { Menu01Icon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
+
 import { Link } from "@/components/link";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
@@ -64,11 +65,11 @@ export function Navbar() {
   ] as const;
 
   return (
-    <header className="fixed top-0 right-0 left-0 z-50 border-border border-b bg-background/80 backdrop-blur-sm">
+    <header className="border-border bg-background/80 fixed top-0 right-0 left-0 z-50 border-b backdrop-blur-sm">
       <nav className="mx-auto flex h-12 max-w-(--breakpoint-2xl) items-center justify-between px-6">
         <Link className="flex items-center gap-2" to="/">
-          <span className="size-1.5 bg-primary" />
-          <span className="font-bold text-sm">VOMLabs</span>
+          <span className="bg-primary size-1.5" />
+          <span className="text-sm font-bold">VOMLabs</span>
         </Link>
 
         {isMobile ? (
@@ -89,7 +90,7 @@ export function Navbar() {
           <div className="flex items-center gap-4">
             {navLinks.map((link) => (
               <a
-                className="font-medium text-muted-foreground text-sm hover:text-foreground"
+                className="text-muted-foreground hover:text-foreground text-sm font-medium"
                 href={link.href}
                 key={link.label}
                 rel="noopener noreferrer"
@@ -99,13 +100,13 @@ export function Navbar() {
               </a>
             ))}
             <Link
-              className="font-medium text-muted-foreground text-sm hover:text-foreground"
+              className="text-muted-foreground hover:text-foreground text-sm font-medium"
               to="/blog"
             >
               Blog
             </Link>
             <Link
-              className="font-medium text-muted-foreground text-sm hover:text-foreground"
+              className="text-muted-foreground hover:text-foreground text-sm font-medium"
               to="/faq"
             >
               FAQ
@@ -114,7 +115,7 @@ export function Navbar() {
               <>
                 {session.user.role === "admin" && (
                   <Link
-                    className="font-medium text-muted-foreground text-sm hover:text-foreground"
+                    className="text-muted-foreground hover:text-foreground text-sm font-medium"
                     to="/admin"
                   >
                     Admin
@@ -145,7 +146,7 @@ export function Navbar() {
               </>
             ) : (
               <Link
-                className="font-medium text-muted-foreground text-sm hover:text-foreground"
+                className="text-muted-foreground hover:text-foreground text-sm font-medium"
                 to="/login"
               >
                 Sign In
@@ -164,7 +165,7 @@ export function Navbar() {
           <div className="flex flex-col gap-1 px-4 pb-4">
             {navLinks.map((link) => (
               <button
-                className="flex items-center gap-2 rounded-none border border-border bg-muted p-3 text-left font-medium text-sm transition-colors hover:bg-accent"
+                className="border-border bg-muted hover:bg-accent flex items-center gap-2 rounded-none border p-3 text-left text-sm font-medium transition-colors"
                 key={link.label}
                 onClick={() => {
                   logger.debug("Drawer nav link clicked", {
@@ -179,7 +180,7 @@ export function Navbar() {
               </button>
             ))}
             <Link
-              className="flex items-center gap-2 rounded-none border border-border bg-muted p-3 font-medium text-sm transition-colors hover:bg-accent"
+              className="border-border bg-muted hover:bg-accent flex items-center gap-2 rounded-none border p-3 text-sm font-medium transition-colors"
               onClick={() => {
                 logger.debug("Drawer Blog link clicked");
                 setDrawerOpen(false);
@@ -189,7 +190,7 @@ export function Navbar() {
               Blog
             </Link>
             <Link
-              className="flex items-center gap-2 rounded-none border border-border bg-muted p-3 font-medium text-sm transition-colors hover:bg-accent"
+              className="border-border bg-muted hover:bg-accent flex items-center gap-2 rounded-none border p-3 text-sm font-medium transition-colors"
               onClick={() => {
                 logger.debug("Drawer FAQ link clicked");
                 setDrawerOpen(false);
@@ -202,7 +203,7 @@ export function Navbar() {
               <>
                 {session.user.role === "admin" && (
                   <Link
-                    className="flex items-center gap-2 rounded-none border border-border bg-muted p-3 font-medium text-sm transition-colors hover:bg-accent"
+                    className="border-border bg-muted hover:bg-accent flex items-center gap-2 rounded-none border p-3 text-sm font-medium transition-colors"
                     onClick={() => {
                       logger.debug("Drawer Admin link clicked");
                       setDrawerOpen(false);
@@ -213,7 +214,7 @@ export function Navbar() {
                   </Link>
                 )}
                 <button
-                  className="flex items-center gap-2 rounded-none border border-border bg-muted p-3 text-left font-medium text-sm transition-colors hover:bg-accent"
+                  className="border-border bg-muted hover:bg-accent flex items-center gap-2 rounded-none border p-3 text-left text-sm font-medium transition-colors"
                   onClick={async () => {
                     try {
                       logger.info("User signing out (drawer)");
@@ -238,7 +239,7 @@ export function Navbar() {
               </>
             ) : (
               <Link
-                className="flex items-center gap-2 rounded-none border border-border bg-muted p-3 font-medium text-sm transition-colors hover:bg-accent"
+                className="border-border bg-muted hover:bg-accent flex items-center gap-2 rounded-none border p-3 text-sm font-medium transition-colors"
                 onClick={() => {
                   logger.debug("Drawer Sign In link clicked");
                   setDrawerOpen(false);
@@ -248,10 +249,10 @@ export function Navbar() {
                 Sign In
               </Link>
             )}
-            <div className="my-1 border-border border-t" />
+            <div className="border-border my-1 border-t" />
             {externalLinks.map((link) => (
               <button
-                className="flex items-center gap-2 rounded-none border border-border bg-muted p-3 text-left font-medium text-sm transition-colors hover:bg-accent"
+                className="border-border bg-muted hover:bg-accent flex items-center gap-2 rounded-none border p-3 text-left text-sm font-medium transition-colors"
                 key={link.label}
                 onClick={() => {
                   setDrawerOpen(false);

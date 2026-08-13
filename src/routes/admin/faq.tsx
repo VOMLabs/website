@@ -1,13 +1,21 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createServerFn } from "@tanstack/react-start";
+import { eq } from "drizzle-orm";
 import { useState } from "react";
 import { toast } from "sonner";
-import { db } from "@/lib/db";
-import { faqs } from "@/lib/db/schema";
-import { eq } from "drizzle-orm";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { createServerFn } from "@tanstack/react-start";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { db } from "@/lib/db";
+import { faqs } from "@/lib/db/schema";
 
 const deleteFaq = createServerFn({ method: "POST" })
   .validator((id: string) => id)
@@ -64,8 +72,11 @@ function AdminFaqPage() {
 
   return (
     <div className="flex flex-col gap-6">
-      <h1 className="font-bold text-2xl tracking-tight">Manage FAQ</h1>
-      <form className="flex flex-col gap-3 border border-border bg-muted p-4" onSubmit={handleAdd}>
+      <h1 className="text-2xl font-bold tracking-tight">Manage FAQ</h1>
+      <form
+        className="border-border bg-muted flex flex-col gap-3 border p-4"
+        onSubmit={handleAdd}
+      >
         <Input
           onChange={(e) => setQuestion(e.target.value)}
           placeholder="Question"
@@ -91,10 +102,24 @@ function AdminFaqPage() {
         <TableBody>
           {items.map((item) => (
             <TableRow key={item.id}>
-              <TableCell className="font-medium">{item.question}</TableCell>
-              <TableCell className="text-muted-foreground text-sm">{item.answer}</TableCell>
+              <TableCell
+                className="max-w-[280px] truncate font-medium"
+                title={item.question}
+              >
+                {item.question}
+              </TableCell>
+              <TableCell
+                className="text-muted-foreground max-w-[320px] truncate text-sm"
+                title={item.answer}
+              >
+                {item.answer}
+              </TableCell>
               <TableCell>
-                <Button onClick={() => handleDelete(item.id)} size="sm" variant="destructive">
+                <Button
+                  onClick={() => handleDelete(item.id)}
+                  size="sm"
+                  variant="destructive"
+                >
                   Delete
                 </Button>
               </TableCell>

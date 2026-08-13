@@ -2,19 +2,23 @@ import { TanStackDevtools } from "@tanstack/react-devtools";
 import {
   createRootRoute,
   HeadContent,
+  Link,
   Outlet,
   Scripts,
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { NuqsAdapter } from "nuqs/adapters/tanstack-router";
 import { useEffect } from "react";
+
 import { ErrorBoundary } from "@/components/error-boundary";
+import { ErrorPage } from "@/components/error-page";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/sections/home/footer";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { log } from "@/lib/logger";
+
 import appCss from "../styles.css?url";
 
 export const Route = createRootRoute({
@@ -42,23 +46,24 @@ export const Route = createRootRoute({
     <main className="flex flex-col items-center justify-center px-6 py-24 text-center">
       <div className="flex max-w-sm flex-col items-center gap-4">
         <div className="space-y-2">
-          <h1 className="font-bold text-5xl tracking-tight">404</h1>
-          <p className="font-medium text-muted-foreground text-xl">
+          <h1 className="text-5xl font-bold tracking-tight">404</h1>
+          <p className="text-muted-foreground text-xl font-medium">
             Page not found
           </p>
         </div>
         <p className="text-muted-foreground text-sm leading-relaxed">
           The page you&apos;re looking for doesn&apos;t exist or has been moved.
         </p>
-        <a
-          className="inline-flex h-8 shrink-0 select-none items-center justify-center gap-1.5 whitespace-nowrap border border-transparent bg-primary px-2.5 font-medium text-primary-foreground text-xs outline-none transition-all hover:bg-primary/80 focus-visible:border-ring focus-visible:ring-1 focus-visible:ring-ring/50 active:translate-y-px disabled:pointer-events-none disabled:opacity-50"
-          href="/"
+        <Link
+          className="bg-primary text-primary-foreground hover:bg-primary/80 focus-visible:border-ring focus-visible:ring-ring/50 inline-flex h-8 shrink-0 items-center justify-center gap-1.5 border border-transparent px-2.5 text-xs font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:ring-1 active:translate-y-px disabled:pointer-events-none disabled:opacity-50"
+          to="/"
         >
           Go home
-        </a>
+        </Link>
       </div>
     </main>
   ),
+  errorComponent: ({ error }) => <ErrorPage error={error} />,
   component: RootLayout,
   shellComponent: RootDocument,
 });

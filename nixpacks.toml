@@ -10,15 +10,13 @@ nixPkgs = ["nodejs_22", "git"]
 [phases.install]
 dependsOn = ["setup"]
 cmds = [
-    "curl -fsSL https://bun.sh/install | bash",
-    "bun install --frozen-lockfile"
+  "curl -fsSL https://bun.sh/install | bash",
+  "bun install --frozen-lockfile",
 ]
 
 [phases.build]
 dependsOn = ["install"]
-cmds = [
-    "bun run build"
-]
+cmds = ["bun run build"]
 
 [start]
 cmd = "bun run start"
