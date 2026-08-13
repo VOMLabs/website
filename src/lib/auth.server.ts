@@ -3,7 +3,7 @@ import { betterAuth } from "better-auth";
 import { username, admin } from "better-auth/plugins";
 import { tanstackStartCookies } from "better-auth/tanstack-start";
 
-import { db } from "./db";
+import { db } from "./db/index.server";
 import { env } from "./env";
 
 export const auth = betterAuth({

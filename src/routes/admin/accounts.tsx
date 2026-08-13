@@ -1,6 +1,4 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { createServerFn } from "@tanstack/react-start";
-import { eq } from "drizzle-orm";
 import { toast } from "sonner";
 
 import { Badge } from "@/components/ui/badge";
@@ -13,21 +11,11 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { db } from "@/lib/db";
-import { users } from "@/lib/db/schema";
-
-const setRole = createServerFn({ method: "POST" })
-  .validator((data: { userId: string; role: string }) => data)
-  .handler(async ({ data }) => {
-    await db
-      .update(users)
-      .set({ role: data.role })
-      .where(eq(users.id, data.userId));
-  });
+import { getAllUsers, setRole } from "@/lib/db/functions";
 
 export const Route = createFileRoute("/admin/accounts")({
   loader: async () => {
-    const accounts = await db.select().from(users);
+    const { accounts } = await getAllUsers();
     return { accounts };
   },
   component: AdminAccountsPage,

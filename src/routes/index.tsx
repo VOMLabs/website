@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { desc } from "drizzle-orm";
 
 import { About } from "@/components/sections/home/about";
 import { BecomeDev } from "@/components/sections/home/become-dev";
@@ -7,8 +6,7 @@ import { Engineers } from "@/components/sections/home/engineers";
 import { Faq } from "@/components/sections/home/faq";
 import { Features } from "@/components/sections/home/features";
 import { Hero } from "@/components/sections/home/hero";
-import { db } from "@/lib/db";
-import { faqs } from "@/lib/db/schema";
+import { getHomeFaqs } from "@/lib/db/functions";
 import { createLogger } from "@/lib/logger";
 
 const logger = createLogger("HomePage");
@@ -16,13 +14,9 @@ const logger = createLogger("HomePage");
 export const Route = createFileRoute("/")({
   loader: async () => {
     try {
-      const items = await db
-        .select()
-        .from(faqs)
-        .orderBy(desc(faqs.createdAt))
-        .limit(7);
-      logger.debug("FAQs loaded for homepage", { count: items.length });
-      return { faqs: items };
+      const { faqs } = await getHomeFaqs();
+      logger.debug("FAQs loaded for homepage", { count: faqs.length });
+      return { faqs };
     } catch (error) {
       logger.error("Failed to load FAQs for homepage", {
         error: error instanceof Error ? error.message : String(error),

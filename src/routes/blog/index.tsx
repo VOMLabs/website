@@ -1,25 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { eq, desc } from "drizzle-orm";
 
 import { Link } from "@/components/link";
-import { db } from "@/lib/db";
-import { blogPosts, users } from "@/lib/db/schema";
+import { getPublishedPosts } from "@/lib/db/functions";
 
 export const Route = createFileRoute("/blog/")({
   loader: async () => {
-    const posts = await db
-      .select({
-        id: blogPosts.id,
-        title: blogPosts.title,
-        slug: blogPosts.slug,
-        excerpt: blogPosts.excerpt,
-        createdAt: blogPosts.createdAt,
-        authorName: users.name,
-      })
-      .from(blogPosts)
-      .innerJoin(users, eq(blogPosts.authorId, users.id))
-      .where(eq(blogPosts.published, true))
-      .orderBy(desc(blogPosts.createdAt));
+    const { posts } = await getPublishedPosts();
     return { posts };
   },
   component: BlogPage,

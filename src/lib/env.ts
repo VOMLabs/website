@@ -2,23 +2,49 @@ import "dotenv/config";
 import { createEnv } from "@t3-oss/env-core";
 import * as v from "valibot";
 
-const skipValidation =
-  process.env.SKIP_ENV_VALIDATION === "true" ||
-  process.env.CI === "true" ||
-  process.env.npm_lifecycle_event === "build" ||
-  process.env.npm_lifecycle_event === "fmt" ||
-  process.env.npm_lifecycle_event === "fmt:check" ||
-  process.env.npm_lifecycle_event === "lint" ||
-  process.env.npm_lifecycle_event === "test" ||
-  process.env.npm_lifecycle_event === "typecheck";
+export const envSchema = {
+  DATABASE_URL: v.pipe(v.string(), v.url()),
+  BETTER_AUTH_URL: v.optional(v.pipe(v.string(), v.url())),
+  BETTER_AUTH_SECRET: v.optional(v.pipe(v.string(), v.minLength(8))),
+} as const;
 
-export const env = createEnv({
-  server: {
-    DATABASE_URL: v.pipe(v.string(), v.url()),
-    BETTER_AUTH_URL: v.optional(v.pipe(v.string(), v.url())),
-    BETTER_AUTH_SECRET: v.optional(v.pipe(v.string(), v.minLength(8))),
-  },
-  runtimeEnv: process.env,
-  emptyStringAsUndefined: true,
-  skipValidation,
-});
+/**
+ * Whether to skip strict env validation for tooling/CI runs that don't have
+ * a full runtime environment (build, format, lint, tests, typecheck).
+ */
+export function shouldSkipEnvValidation(
+  lifecycleEvent: string | undefined,
+  vars: Record<string, string | undefined>,
+): boolean {
+  return (
+    vars.SKIP_ENV_VALIDATION === "true" ||
+    vars.CI === "true" ||
+    lifecycleEvent === "build" ||
+    lifecycleEvent === "fmt" ||
+    lifecycleEvent === "fmt:check" ||
+    lifecycleEvent === "lint" ||
+    lifecycleEvent === "test" ||
+    lifecycleEvent === "typecheck"
+  );
+}
+
+/**
+ * Build the validated env object. Exposed as a factory so tests can exercise
+ * the validation logic with isolated variable sets.
+ */
+export function createValidatedEnv(
+  vars: Record<string, string | undefined>,
+  lifecycleEvent: string | undefined,
+) {
+  return createEnv({
+    server: envSchema,
+    runtimeEnv: vars,
+    emptyStringAsUndefined: true,
+    skipValidation: shouldSkipEnvValidation(lifecycleEvent, vars),
+  });
+}
+
+export const env = createValidatedEnv(
+  process.env,
+  process.env.npm_lifecycle_event,
+);

@@ -2,13 +2,12 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Search } from "lucide-react";
 import { parseAsString, useQueryState } from "nuqs";
 
-import { db } from "@/lib/db";
-import { faqs } from "@/lib/db/schema";
+import { getAllFaqs } from "@/lib/db/functions";
 
 export const Route = createFileRoute("/faq")({
   loader: async () => {
-    const items = await db.select().from(faqs);
-    return { faqs: items };
+    const { faqs } = await getAllFaqs();
+    return { faqs };
   },
   component: FaqPage,
 });

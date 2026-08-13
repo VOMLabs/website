@@ -1,23 +1,10 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
-import { eq } from "drizzle-orm";
 
-import { db } from "@/lib/db";
-import { blogPosts, users } from "@/lib/db/schema";
+import { getPostById } from "@/lib/db/functions";
 
 export const Route = createFileRoute("/blog/posts/$id")({
   loader: async ({ params }) => {
-    const [post] = await db
-      .select({
-        id: blogPosts.id,
-        title: blogPosts.title,
-        content: blogPosts.content,
-        excerpt: blogPosts.excerpt,
-        createdAt: blogPosts.createdAt,
-        authorName: users.name,
-      })
-      .from(blogPosts)
-      .innerJoin(users, eq(blogPosts.authorId, users.id))
-      .where(eq(blogPosts.id, params.id));
+    const { post } = await getPostById({ data: params.id });
 
     if (!post) {
       throw notFound();

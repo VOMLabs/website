@@ -1,6 +1,4 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { createServerFn } from "@tanstack/react-start";
-import { eq } from "drizzle-orm";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -14,25 +12,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { db } from "@/lib/db";
-import { faqs } from "@/lib/db/schema";
-
-const deleteFaq = createServerFn({ method: "POST" })
-  .validator((id: string) => id)
-  .handler(async ({ data: id }) => {
-    await db.delete(faqs).where(eq(faqs.id, id));
-  });
-
-const addFaq = createServerFn({ method: "POST" })
-  .validator((data: { question: string; answer: string }) => data)
-  .handler(async ({ data }) => {
-    await db.insert(faqs).values(data);
-  });
+import { addFaq, deleteFaq, getAllFaqs } from "@/lib/db/functions";
 
 export const Route = createFileRoute("/admin/faq")({
   loader: async () => {
-    const items = await db.select().from(faqs);
-    return { items };
+    const { faqs } = await getAllFaqs();
+    return { items: faqs };
   },
   component: AdminFaqPage,
 });

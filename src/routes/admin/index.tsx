@@ -1,22 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { db } from "@/lib/db";
-import { faqs, blogPosts, users } from "@/lib/db/schema";
+import { getAdminStats } from "@/lib/db/functions";
 
 export const Route = createFileRoute("/admin/")({
-  loader: async () => {
-    const [faqCount] = await db.select({ count: faqs.id }).from(faqs);
-    const [postCount] = await db
-      .select({ count: blogPosts.id })
-      .from(blogPosts);
-    const [userCount] = await db.select({ count: users.id }).from(users);
-    return {
-      faqCount: Number(faqCount?.count ?? 0),
-      postCount: Number(postCount?.count ?? 0),
-      userCount: Number(userCount?.count ?? 0),
-    };
-  },
+  loader: async () => getAdminStats(),
   component: AdminDashboard,
 });
 

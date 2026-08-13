@@ -1,7 +1,4 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { createServerFn } from "@tanstack/react-start";
-import { getRequestHeaders } from "@tanstack/react-start/server";
-import { eq } from "drizzle-orm";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -16,35 +13,11 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Textarea } from "@/components/ui/textarea";
-import { auth } from "@/lib/auth";
-import { db } from "@/lib/db";
-import { blogPosts } from "@/lib/db/schema";
-
-const deletePost = createServerFn({ method: "POST" })
-  .validator((id: string) => id)
-  .handler(async ({ data: id }) => {
-    await db.delete(blogPosts).where(eq(blogPosts.id, id));
-  });
-
-const createPost = createServerFn({ method: "POST" })
-  .validator(
-    (data: { title: string; slug: string; excerpt: string; content: string }) =>
-      data,
-  )
-  .handler(async ({ data }) => {
-    const headers = getRequestHeaders();
-    const session = await auth.api.getSession({ headers });
-    if (!session) throw new Error("Unauthorized");
-    await db.insert(blogPosts).values({
-      ...data,
-      authorId: session.user.id,
-      published: true,
-    });
-  });
+import { createPost, deletePost, getAllBlogPosts } from "@/lib/db/functions";
 
 export const Route = createFileRoute("/admin/blogs")({
   loader: async () => {
-    const posts = await db.select().from(blogPosts);
+    const { posts } = await getAllBlogPosts();
     return { posts };
   },
   component: AdminBlogsPage,
