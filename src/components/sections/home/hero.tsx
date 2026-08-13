@@ -1,10 +1,10 @@
 "use client";
 
-import { faDiscord, faGithub } from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import LogoGithub from "@gravity-ui/icons/LogoGithub";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
+import { DiscordIcon } from "@/components/icons/discord";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -71,7 +71,7 @@ export function Hero() {
                       logger.info("GitHub dialog trigger clicked");
                     }}
                   >
-                    <FontAwesomeIcon icon={faGithub} />
+                    <LogoGithub className="size-4" />
                     GitHub
                   </Button>
                 }
@@ -112,7 +112,7 @@ export function Hero() {
                       rel="noopener noreferrer"
                       target="_blank"
                     >
-                      <FontAwesomeIcon className="size-5" icon={faGithub} />
+                      <LogoGithub className="size-5" />
                       <div className="flex flex-col text-left">
                         <span className="text-sm font-medium">{org.name}</span>
                         <span className="text-muted-foreground text-xs">
@@ -147,7 +147,7 @@ export function Hero() {
               }}
               variant="outline"
             >
-              <FontAwesomeIcon icon={faDiscord} />
+              <DiscordIcon className="size-4" />
               Join the Discord
             </Button>
           </div>

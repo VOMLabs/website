@@ -1,10 +1,7 @@
 import { Combobox as ComboboxPrimitive } from "@base-ui/react";
-import {
-  ArrowDown01Icon,
-  Cancel01Icon,
-  Tick02Icon,
-} from "@hugeicons/core-free-icons";
-import { HugeiconsIcon } from "@hugeicons/react";
+import ArrowChevronDown from "@gravity-ui/icons/ArrowChevronDown";
+import Check from "@gravity-ui/icons/Check";
+import Xmark from "@gravity-ui/icons/Xmark";
 import * as React from "react";
 
 import { Button } from "@/components/ui/button";
@@ -34,9 +31,9 @@ function ComboboxTrigger({
       {...props}
     >
       {children}
-      <HugeiconsIcon
+      <ArrowChevronDown
         className="text-muted-foreground pointer-events-none size-4"
-        icon={ArrowDown01Icon}
+
         strokeWidth={2}
       />
     </ComboboxPrimitive.Trigger>
@@ -50,9 +47,9 @@ function ComboboxClear({ className, ...props }: ComboboxPrimitive.Clear.Props) {
       render={<InputGroupButton size="icon-xs" variant="ghost" />}
       {...props}
     >
-      <HugeiconsIcon
+      <Xmark
         className="pointer-events-none"
-        icon={Cancel01Icon}
+
         strokeWidth={2}
       />
     </ComboboxPrimitive.Clear>
@@ -164,9 +161,9 @@ function ComboboxItem({
           <span className="pointer-events-none absolute right-2 flex size-4 items-center justify-center" />
         }
       >
-        <HugeiconsIcon
+        <Check
           className="pointer-events-none"
-          icon={Tick02Icon}
+
           strokeWidth={2}
         />
       </ComboboxPrimitive.ItemIndicator>
@@ -270,9 +267,9 @@ function ComboboxChip({
           data-slot="combobox-chip-remove"
           render={<Button size="icon-xs" variant="ghost" />}
         >
-          <HugeiconsIcon
+          <Xmark
             className="pointer-events-none"
-            icon={Cancel01Icon}
+
             strokeWidth={2}
           />
         </ComboboxPrimitive.ChipRemove>

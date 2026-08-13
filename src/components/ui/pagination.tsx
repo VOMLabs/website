@@ -1,9 +1,6 @@
-import {
-  ArrowLeft01Icon,
-  ArrowRight01Icon,
-  MoreHorizontalCircle01Icon,
-} from "@hugeicons/core-free-icons";
-import { HugeiconsIcon } from "@hugeicons/react";
+import ArrowChevronLeft from "@gravity-ui/icons/ArrowChevronLeft";
+import ArrowChevronRight from "@gravity-ui/icons/ArrowChevronRight";
+import Ellipsis from "@gravity-ui/icons/Ellipsis";
 import type * as React from "react";
 
 import { Button } from "@/components/ui/button";
@@ -78,9 +75,9 @@ function PaginationPrevious({
       size="default"
       {...props}
     >
-      <HugeiconsIcon
+      <ArrowChevronLeft
         data-icon="inline-start"
-        icon={ArrowLeft01Icon}
+
         strokeWidth={2}
       />
       <span className="hidden sm:block">{text}</span>
@@ -101,9 +98,9 @@ function PaginationNext({
       {...props}
     >
       <span className="hidden sm:block">{text}</span>
-      <HugeiconsIcon
+      <ArrowChevronRight
         data-icon="inline-end"
-        icon={ArrowRight01Icon}
+
         strokeWidth={2}
       />
     </PaginationLink>
@@ -124,7 +121,7 @@ function PaginationEllipsis({
       data-slot="pagination-ellipsis"
       {...props}
     >
-      <HugeiconsIcon icon={MoreHorizontalCircle01Icon} strokeWidth={2} />
+      <Ellipsis strokeWidth={2} />
       <span className="sr-only">More pages</span>
     </span>
   );

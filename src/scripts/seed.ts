@@ -2,7 +2,7 @@ import "dotenv/config";
 import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 
-import { faqs } from "../lib/db/schema.js";
+import { faqs, products } from "../lib/db/schema.js";
 import { env } from "../lib/env.js";
 
 const connectionString = env.DATABASE_URL;
@@ -43,7 +43,7 @@ const faqData = [
   {
     question: "What programming languages does VOMLabs use?",
     answer:
-      "We primarily use Rust, Java, TypeScript, and Go across our projects, chosen for performance, safety, and developer experience.",
+      "We primarily use Rust, Java, TypeScript, and C++ across our projects, chosen for performance, safety, and developer experience.",
   },
   {
     question: "Are VOMLabs projects free to use?",
@@ -137,15 +137,34 @@ const faqData = [
   },
 ];
 
+const productData = [
+  {
+    name: "LazyDesktop",
+    slug: "lazydesktop",
+    tagline: "The KDE-native GitHub Desktop alternative",
+    description:
+      "LazyDesktop is a KDE-native GitHub Desktop alternative with a Qt UI and a Rust backend. It brings fast, native, privacy-respecting GitHub workflows straight to your Linux desktop.",
+    githubUrl: null,
+    homepageUrl: null,
+    featured: true,
+  },
+];
+
 async function main() {
   try {
     console.log("Seeding FAQs...");
     await db.delete(faqs);
     await db.insert(faqs).values(faqData);
     console.log(`Successfully seeded ${faqData.length} FAQs.`);
+
+    console.log("Seeding Products...");
+    await db.delete(products);
+    await db.insert(products).values(productData);
+    console.log(`Successfully seeded ${productData.length} products.`);
+
     process.exit(0);
   } catch (error) {
-    console.error("Failed to seed FAQs:", error);
+    console.error("Failed to seed data:", error);
     process.exit(1);
   }
 }

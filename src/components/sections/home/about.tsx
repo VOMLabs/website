@@ -1,7 +1,12 @@
-import { Code2, type LucideIcon, Puzzle, Terminal, Wrench } from "lucide-react";
+import Code from "@gravity-ui/icons/Code";
+import Puzzle from "@gravity-ui/icons/Puzzle";
+import Terminal from "@gravity-ui/icons/Terminal";
+import Wrench from "@gravity-ui/icons/Wrench";
+
+import { type IconComponent } from "@/components/icons";
 
 const items: {
-  icon: LucideIcon;
+  icon: IconComponent;
   title: string;
   description: string;
 }[] = [
@@ -18,7 +23,7 @@ const items: {
       "High-quality, feature-rich tools and libraries offered at competitive prices.",
   },
   {
-    icon: Code2,
+    icon: Code,
     title: "Web Development",
     description:
       "Clean, responsive, and performant websites built with modern frameworks and best-in-class tooling.",

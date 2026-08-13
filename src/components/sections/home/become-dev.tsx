@@ -1,37 +1,39 @@
 "use client";
 
-import { faDiscord } from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { GitFork, Handshake, type LucideIcon, Users } from "lucide-react";
+import CodeFork from "@gravity-ui/icons/CodeFork";
+import HandOk from "@gravity-ui/icons/HandOk";
+import Persons from "@gravity-ui/icons/Persons";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
+import { type IconComponent } from "@/components/icons";
+import { DiscordIcon } from "@/components/icons/discord";
 import { Button } from "@/components/ui/button";
 import { createLogger } from "@/lib/logger";
 
 const logger = createLogger("BecomeDev");
 
 const items: {
-  icon: LucideIcon;
+  icon: IconComponent;
   title: string;
   description: string;
 }[] = [
   {
-    icon: Users,
+    icon: Persons,
     title: "Join Our Community",
     description: "Connect with developers and contributors on Discord.",
   },
   {
-    icon: GitFork,
+    icon: CodeFork,
     title: "Quality Products",
     description:
       "Help us build high-quality, affordable tools that developers love.",
   },
   {
-    icon: Handshake,
+    icon: HandOk,
     title: "Build with Us",
     description:
-      "Work on C++, Java, TypeScript, Go, and Rust projects alongside experienced devs.",
+      "Work on C++, Java, TypeScript, and Rust projects alongside experienced devs.",
   },
 ];
 
@@ -96,7 +98,7 @@ export function BecomeDev() {
             }}
             variant="outline"
           >
-            <FontAwesomeIcon icon={faDiscord} />
+            <DiscordIcon className="size-4" />
             Join Discord to Apply
           </Button>
         )}

@@ -1,5 +1,4 @@
-import { UnfoldMoreIcon } from "@hugeicons/core-free-icons";
-import { HugeiconsIcon } from "@hugeicons/react";
+import CaretsExpandVertical from "@gravity-ui/icons/CaretsExpandVertical";
 import type * as React from "react";
 
 import { cn } from "@/lib/utils";
@@ -28,11 +27,11 @@ function NativeSelect({
         data-slot="native-select"
         {...props}
       />
-      <HugeiconsIcon
+      <CaretsExpandVertical
         aria-hidden="true"
         className="text-muted-foreground pointer-events-none absolute top-1/2 right-2.5 size-4 -translate-y-1/2 select-none"
         data-slot="native-select-icon"
-        icon={UnfoldMoreIcon}
+
         strokeWidth={2}
       />
     </div>

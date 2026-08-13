@@ -1,27 +1,23 @@
 "use client";
 
-import { faBookOpen } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  BookOpen,
-  Box,
-  Cpu,
-  type LucideIcon,
-  RefreshCw,
-  Terminal,
-  Workflow,
-  Wrench,
-} from "lucide-react";
+import ArrowRotateRight from "@gravity-ui/icons/ArrowRotateRight";
+import BookOpen from "@gravity-ui/icons/BookOpen";
+import Box from "@gravity-ui/icons/Box";
+import Cpu from "@gravity-ui/icons/Cpu";
+import Route from "@gravity-ui/icons/Route";
+import Terminal from "@gravity-ui/icons/Terminal";
+import Wrench from "@gravity-ui/icons/Wrench";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
+import { type IconComponent } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { createLogger } from "@/lib/logger";
 
 const logger = createLogger("Engineers");
 
 const items: {
-  icon: LucideIcon;
+  icon: IconComponent;
   title: string;
   description: string;
 }[] = [
@@ -41,10 +37,10 @@ const items: {
     icon: Wrench,
     title: "Modern Tooling",
     description:
-      "Leverage the latest technologies like React, Rust, C++, and Go for high-performance development.",
+      "Leverage the latest technologies like React, Rust, Java, TypeScript, and C++ for high-performance development.",
   },
   {
-    icon: RefreshCw,
+    icon: ArrowRotateRight,
     title: "CI/CD Ready",
     description:
       "Our software integrates seamlessly with modern deployment pipelines and automated workflows.",
@@ -56,7 +52,7 @@ const items: {
       "Speed up your workflow with powerful command-line tools designed for speed and automation.",
   },
   {
-    icon: Workflow,
+    icon: Route,
     title: "Docker Ready",
     description:
       "Deploy instantly with pre-built Docker images for consistent environments across setups.",
@@ -129,7 +125,7 @@ export function Engineers() {
               }
             }}
           >
-            <FontAwesomeIcon icon={faBookOpen} />
+            <BookOpen className="size-4" />
             View the Documentation
           </Button>
         )}

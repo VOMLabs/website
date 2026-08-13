@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronDown } from "lucide-react";
+import ChevronDown from "@gravity-ui/icons/ChevronDown";
 import { useEffect, useState } from "react";
 
 import { Link } from "@/components/link";

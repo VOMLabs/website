@@ -1,13 +1,10 @@
 "use client";
 
-import {
-  Alert02Icon,
-  CheckmarkCircle02Icon,
-  InformationCircleIcon,
-  Loading03Icon,
-  MultiplicationSignCircleIcon,
-} from "@hugeicons/core-free-icons";
-import { HugeiconsIcon } from "@hugeicons/react";
+import ArrowRotateRight from "@gravity-ui/icons/ArrowRotateRight";
+import CircleCheck from "@gravity-ui/icons/CircleCheck";
+import CircleInfo from "@gravity-ui/icons/CircleInfo";
+import CircleXmark from "@gravity-ui/icons/CircleXmark";
+import TriangleExclamation from "@gravity-ui/icons/TriangleExclamation";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { Toaster as Sonner, type ToasterProps } from "sonner";
@@ -34,37 +31,37 @@ const Toaster = ({ ...props }: ToasterProps) => {
       className="toaster group"
       icons={{
         success: (
-          <HugeiconsIcon
+          <CircleCheck
             className="size-4"
-            icon={CheckmarkCircle02Icon}
+
             strokeWidth={2}
           />
         ),
         info: (
-          <HugeiconsIcon
+          <CircleInfo
             className="size-4"
-            icon={InformationCircleIcon}
+
             strokeWidth={2}
           />
         ),
         warning: (
-          <HugeiconsIcon
+          <TriangleExclamation
             className="size-4"
-            icon={Alert02Icon}
+
             strokeWidth={2}
           />
         ),
         error: (
-          <HugeiconsIcon
+          <CircleXmark
             className="size-4"
-            icon={MultiplicationSignCircleIcon}
+
             strokeWidth={2}
           />
         ),
         loading: (
-          <HugeiconsIcon
+          <ArrowRotateRight
             className="size-4 animate-spin"
-            icon={Loading03Icon}
+
             strokeWidth={2}
           />
         ),

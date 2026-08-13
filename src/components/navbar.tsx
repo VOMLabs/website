@@ -1,12 +1,11 @@
 "use client";
 
-import { faDiscord, faGithub } from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Menu01Icon } from "@hugeicons/core-free-icons";
-import { HugeiconsIcon } from "@hugeicons/react";
+import Bars from "@gravity-ui/icons/Bars";
+import LogoGithub from "@gravity-ui/icons/LogoGithub";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
+import { DiscordIcon } from "@/components/icons/discord";
 import { Link } from "@/components/link";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
@@ -26,12 +25,12 @@ const externalLinks = [
   {
     label: "GitHub",
     href: "https://github.com/VOMLabs",
-    icon: faGithub,
+    icon: LogoGithub,
   },
   {
     label: "Discord",
     href: "https://discord.vomlabs.com",
-    icon: faDiscord,
+    icon: DiscordIcon,
   },
 ] as const;
 
@@ -83,7 +82,7 @@ export function Navbar() {
               size="icon-sm"
               variant="ghost"
             >
-              <HugeiconsIcon icon={Menu01Icon} strokeWidth={2} />
+              <Bars strokeWidth={2} className="size-4" />
             </Button>
           </div>
         ) : (
@@ -99,6 +98,12 @@ export function Navbar() {
                 {link.label}
               </a>
             ))}
+            <Link
+              className="text-muted-foreground hover:text-foreground text-sm font-medium"
+              to="/products"
+            >
+              Products
+            </Link>
             <Link
               className="text-muted-foreground hover:text-foreground text-sm font-medium"
               to="/blog"
@@ -182,6 +187,16 @@ export function Navbar() {
             <Link
               className="border-border bg-muted hover:bg-accent flex items-center gap-2 rounded-none border p-3 text-sm font-medium transition-colors"
               onClick={() => {
+                logger.debug("Drawer Products link clicked");
+                setDrawerOpen(false);
+              }}
+              to="/products"
+            >
+              Products
+            </Link>
+            <Link
+              className="border-border bg-muted hover:bg-accent flex items-center gap-2 rounded-none border p-3 text-sm font-medium transition-colors"
+              onClick={() => {
                 logger.debug("Drawer Blog link clicked");
                 setDrawerOpen(false);
               }}
@@ -250,7 +265,7 @@ export function Navbar() {
               </Link>
             )}
             <div className="border-border my-1 border-t" />
-            {externalLinks.map((link) => (
+            {externalLinks.map(({ icon: Icon, ...link }) => (
               <button
                 className="border-border bg-muted hover:bg-accent flex items-center gap-2 rounded-none border p-3 text-left text-sm font-medium transition-colors"
                 key={link.label}
@@ -260,7 +275,7 @@ export function Navbar() {
                 }}
                 type="button"
               >
-                <FontAwesomeIcon className="size-4" icon={link.icon} />
+                <Icon className="size-4" />
                 {link.label}
               </button>
             ))}

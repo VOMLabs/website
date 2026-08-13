@@ -1,9 +1,6 @@
-import {
-  ArrowDownIcon,
-  ArrowLeftIcon,
-  ArrowRightIcon,
-} from "@hugeicons/core-free-icons";
-import { HugeiconsIcon } from "@hugeicons/react";
+import ArrowChevronDown from "@gravity-ui/icons/ArrowChevronDown";
+import ArrowChevronLeft from "@gravity-ui/icons/ArrowChevronLeft";
+import ArrowChevronRight from "@gravity-ui/icons/ArrowChevronRight";
 import * as React from "react";
 import {
   type DayButton,
@@ -139,9 +136,9 @@ function Calendar({
         Chevron: ({ className, orientation, ...props }) => {
           if (orientation === "left") {
             return (
-              <HugeiconsIcon
+              <ArrowChevronLeft
                 className={cn("size-4", className)}
-                icon={ArrowLeftIcon}
+
                 strokeWidth={2}
                 {...props}
               />
@@ -150,9 +147,9 @@ function Calendar({
 
           if (orientation === "right") {
             return (
-              <HugeiconsIcon
+              <ArrowChevronRight
                 className={cn("size-4", className)}
-                icon={ArrowRightIcon}
+
                 strokeWidth={2}
                 {...props}
               />
@@ -160,9 +157,9 @@ function Calendar({
           }
 
           return (
-            <HugeiconsIcon
+            <ArrowChevronDown
               className={cn("size-4", className)}
-              icon={ArrowDownIcon}
+
               strokeWidth={2}
               {...props}
             />

@@ -1,25 +1,24 @@
-import {
-  Code2,
-  type LucideIcon,
-  Paintbrush,
-  RefreshCw,
-  Settings,
-  Shield,
-  Zap,
-} from "lucide-react";
+import ArrowRotateRight from "@gravity-ui/icons/ArrowRotateRight";
+import Code from "@gravity-ui/icons/Code";
+import Gear from "@gravity-ui/icons/Gear";
+import Paintbrush from "@gravity-ui/icons/Paintbrush";
+import Shield from "@gravity-ui/icons/Shield";
+import Thunderbolt from "@gravity-ui/icons/Thunderbolt";
+
+import { type IconComponent } from "@/components/icons";
 
 const features: {
-  icon: LucideIcon;
+  icon: IconComponent;
   title: string;
   description: string;
 }[] = [
   {
-    icon: Code2,
+    icon: Code,
     title: "Affordable Pricing",
     description: "High-quality products at prices that won't break the bank.",
   },
   {
-    icon: Zap,
+    icon: Thunderbolt,
     title: "Performance Driven",
     description: "Optimized from the ground up for speed and efficiency.",
   },
@@ -36,13 +35,13 @@ const features: {
       "Privacy-first approach with no telemetry and secure defaults.",
   },
   {
-    icon: RefreshCw,
+    icon: ArrowRotateRight,
     title: "Auto Updates",
     description:
       "Seamless updates so you're always running the latest version.",
   },
   {
-    icon: Settings,
+    icon: Gear,
     title: "Highly Configurable",
     description: "Fine-tune every aspect to fit your exact workflow and needs.",
   },

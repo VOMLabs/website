@@ -1,5 +1,5 @@
+import Magnifier from "@gravity-ui/icons/Magnifier";
 import { createFileRoute } from "@tanstack/react-router";
-import { Search } from "lucide-react";
 import { parseAsString, useQueryState } from "nuqs";
 
 import { getAllFaqs } from "@/lib/db/functions";
@@ -50,7 +50,7 @@ function FaqPage() {
           </p>
         </div>
         <div className="relative w-full">
-          <Search className="text-muted-foreground pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2" />
+          <Magnifier className="text-muted-foreground pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2" />
           <input
             className="border-border bg-muted placeholder:text-muted-foreground focus:border-ring h-9 w-full border pr-3 pl-9 text-sm outline-none"
             onChange={(e) => setQuery(e.target.value || null)}

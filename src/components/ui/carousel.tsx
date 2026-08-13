@@ -1,7 +1,7 @@
 "use client";
 
-import { ArrowLeft01Icon, ArrowRight01Icon } from "@hugeicons/core-free-icons";
-import { HugeiconsIcon } from "@hugeicons/react";
+import ArrowChevronLeft from "@gravity-ui/icons/ArrowChevronLeft";
+import ArrowChevronRight from "@gravity-ui/icons/ArrowChevronRight";
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from "embla-carousel-react";
@@ -214,7 +214,7 @@ function CarouselPrevious({
       variant={variant}
       {...props}
     >
-      <HugeiconsIcon icon={ArrowLeft01Icon} strokeWidth={2} />
+      <ArrowChevronLeft strokeWidth={2} />
       <span className="sr-only">Previous slide</span>
     </Button>
   );
@@ -244,7 +244,7 @@ function CarouselNext({
       variant={variant}
       {...props}
     >
-      <HugeiconsIcon icon={ArrowRight01Icon} strokeWidth={2} />
+      <ArrowChevronRight strokeWidth={2} />
       <span className="sr-only">Next slide</span>
     </Button>
   );

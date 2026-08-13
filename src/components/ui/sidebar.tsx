@@ -2,8 +2,7 @@
 
 import { mergeProps } from "@base-ui/react/merge-props";
 import { useRender } from "@base-ui/react/use-render";
-import { SidebarLeftIcon } from "@hugeicons/core-free-icons";
-import { HugeiconsIcon } from "@hugeicons/react";
+import LayoutSideContentLeft from "@gravity-ui/icons/LayoutSideContentLeft";
 import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
 
@@ -274,7 +273,7 @@ function SidebarTrigger({
       variant="ghost"
       {...props}
     >
-      <HugeiconsIcon icon={SidebarLeftIcon} strokeWidth={2} />
+      <LayoutSideContentLeft strokeWidth={2} />
       <span className="sr-only">Toggle Sidebar</span>
     </Button>
   );

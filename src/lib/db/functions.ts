@@ -5,7 +5,17 @@ import { desc, eq } from "drizzle-orm";
 import { auth } from "@/lib/auth.server";
 
 import { db } from "./index.server";
-import { blogPosts, faqs, users } from "./schema";
+import { blogPosts, faqs, products, users } from "./schema";
+
+export const getProducts = createServerFn({ method: "GET" }).handler(
+  async () => {
+    const items = await db
+      .select()
+      .from(products)
+      .orderBy(desc(products.createdAt));
+    return { products: items };
+  },
+);
 
 export const getHomeFaqs = createServerFn({ method: "GET" }).handler(
   async () => {

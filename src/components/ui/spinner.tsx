@@ -1,5 +1,4 @@
-import { Loading03Icon } from "@hugeicons/core-free-icons";
-import { HugeiconsIcon } from "@hugeicons/react";
+import ArrowRotateRight from "@gravity-ui/icons/ArrowRotateRight";
 
 import { cn } from "@/lib/utils";
 
@@ -8,10 +7,10 @@ function Spinner({
   ...props
 }: Omit<React.ComponentProps<"svg">, "strokeWidth">) {
   return (
-    <HugeiconsIcon
+    <ArrowRotateRight
       aria-label="Loading"
       className={cn("size-4 animate-spin", className)}
-      icon={Loading03Icon}
+
       role="status"
       strokeWidth={2}
       {...props}

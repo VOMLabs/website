@@ -103,3 +103,16 @@ export const blogPosts = pgTable("blog_post", {
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
+
+export const products = pgTable("product", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  name: text("name").notNull(),
+  slug: text("slug").notNull().unique(),
+  tagline: text("tagline").notNull(),
+  description: text("description").notNull(),
+  githubUrl: text("github_url"),
+  homepageUrl: text("homepage_url"),
+  featured: boolean("featured").default(false).notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+});
