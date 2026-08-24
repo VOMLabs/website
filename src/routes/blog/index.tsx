@@ -14,33 +14,39 @@ export const Route = createFileRoute("/blog/")({
 function BlogPage() {
   const { posts } = Route.useLoaderData();
   return (
-    <main className="flex flex-col items-center px-6 py-24">
-      <div className="flex w-full max-w-2xl flex-col items-center gap-8">
-        <div className="space-y-2 text-center">
-          <h1 className="text-3xl font-bold tracking-tight lg:text-4xl">
-            Blog
-          </h1>
-          <p className="text-muted-foreground text-sm leading-relaxed">
+    <main className="border-border border-t">
+      <div className="container-editorial py-16 md:py-24">
+        <header className="mb-12 flex max-w-3xl flex-col gap-4 md:mb-16">
+          <p className="eyebrow">
+            <span className="eyebrow-dot" />
+            Journal
+          </p>
+          <h1 className="display">Blog</h1>
+          <p className="lead max-w-2xl">
             Updates, announcements, and articles from VOMLabs.
           </p>
-        </div>
-        <div className="flex w-full flex-col gap-4">
-          {posts.length === 0 ? (
-            <p className="text-muted-foreground py-8 text-center text-sm">
-              No blog posts yet. Check back soon!
-            </p>
-          ) : (
-            posts.map((post) => (
+        </header>
+        {posts.length === 0 ? (
+          <p className="text-muted-foreground py-8 text-sm">
+            No blog posts yet. Check back soon!
+          </p>
+        ) : (
+          <div className="divide-border border-border flex flex-col divide-y border-y">
+            {posts.map((post) => (
               <Link
-                className="border-border bg-muted hover:bg-accent block border p-6 transition-colors"
+                className="group grid gap-2 py-8 md:grid-cols-[1fr_auto] md:items-baseline md:gap-10"
                 key={post.id}
                 to="/blog/posts/$id"
                 params={{ id: post.id }}
               >
-                <h2 className="mb-2 text-lg font-medium">{post.title}</h2>
-                <p className="text-muted-foreground mb-3 text-sm leading-relaxed">
-                  {post.excerpt}
-                </p>
+                <div>
+                  <h2 className="text-lg font-medium tracking-[-0.01em] transition-transform duration-200 group-hover:translate-x-0.5 md:text-xl">
+                    {post.title}
+                  </h2>
+                  <p className="text-muted-foreground mt-2 max-w-2xl text-sm leading-relaxed">
+                    {post.excerpt}
+                  </p>
+                </div>
                 <div className="text-muted-foreground flex items-center gap-2 text-xs">
                   <span>{post.authorName}</span>
                   <span>&middot;</span>
@@ -53,9 +59,9 @@ function BlogPage() {
                   </span>
                 </div>
               </Link>
-            ))
-          )}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </main>
   );

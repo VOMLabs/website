@@ -1,5 +1,6 @@
 import { Link, useRouter } from "@tanstack/react-router";
 
+import { Button } from "@/components/ui/button";
 import { getErrorMessage, isDatabaseError } from "@/lib/errors";
 
 export function ErrorPage({
@@ -39,15 +40,14 @@ export function ErrorPage({
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-3">
-          <button
-            className="bg-primary text-primary-foreground hover:bg-primary/80 focus-visible:border-ring focus-visible:ring-ring/50 inline-flex h-8 shrink-0 items-center justify-center gap-1.5 border border-transparent px-2.5 text-xs font-medium transition-all outline-none select-none focus-visible:ring-1 active:translate-y-px disabled:pointer-events-none disabled:opacity-50"
+          <Button
             onClick={() => {
               void router.invalidate();
             }}
             type="button"
           >
             Try again
-          </button>
+          </Button>
           <Link
             className="text-muted-foreground hover:text-foreground text-sm font-medium underline underline-offset-4"
             to="/"

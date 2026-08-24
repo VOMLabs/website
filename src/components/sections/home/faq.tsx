@@ -20,16 +20,23 @@ export function Faq({
   }, [faqs.length]);
 
   return (
-    <section className="flex justify-center px-6 py-16 lg:py-24">
-      <div className="flex max-w-2xl min-w-0 flex-col items-center gap-6 text-center">
-        <h2 className="text-2xl font-bold tracking-tight lg:text-3xl">FAQ.</h2>
-        <div className="flex w-full flex-col gap-2 text-left">
+    <section id="faq" className="border-border border-b">
+      <div className="container-editorial py-16 md:py-24">
+        <p className="eyebrow">
+          <span className="eyebrow-dot" />
+          FAQ
+        </p>
+        <h2 className="section-title mt-4">Frequently asked questions</h2>
+        <div className="border-border divide-border mt-10 flex flex-col divide-y border-y">
           {faqs.map((faq) => {
             const isOpen = open === faq.id;
+            const contentId = `faq-content-${faq.id}`;
             return (
-              <div className="border-border bg-muted border" key={faq.id}>
+              <div key={faq.id}>
                 <button
-                  className="flex w-full items-center justify-between p-4 text-left"
+                  aria-controls={contentId}
+                  aria-expanded={isOpen}
+                  className="flex w-full items-center justify-between gap-4 py-5 text-left"
                   onClick={() => {
                     try {
                       const next = isOpen ? null : faq.id;
@@ -51,18 +58,23 @@ export function Faq({
                   }}
                   type="button"
                 >
-                  <span className="text-sm font-medium">{faq.question}</span>
+                  <span className="text-sm font-medium tracking-[-0.01em] md:text-base">
+                    {faq.question}
+                  </span>
                   <ChevronDown
-                    className={`text-muted-foreground size-4 shrink-0 transition-transform duration-150 ${isOpen ? "rotate-180" : ""}`}
+                    className={`text-muted-foreground size-4 shrink-0 transition-transform duration-150 motion-reduce:transition-none ${isOpen ? "rotate-180" : ""}`}
                   />
                 </button>
                 <div
-                  className={`overflow-hidden transition-[max-height] duration-150 ${isOpen ? "max-h-48" : "max-h-0"}`}
+                  className={`grid transition-[grid-template-rows] duration-200 motion-reduce:transition-none ${isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}
+                  id={contentId}
                 >
-                  <div className="px-4 pb-4">
-                    <p className="text-muted-foreground text-xs leading-relaxed">
-                      {faq.answer}
-                    </p>
+                  <div className="overflow-hidden">
+                    <div className="pb-5">
+                      <p className="text-muted-foreground text-sm leading-relaxed">
+                        {faq.answer}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -70,7 +82,7 @@ export function Faq({
           })}
         </div>
         <Link
-          className="text-muted-foreground hover:text-foreground text-sm underline-offset-4 hover:underline"
+          className="text-muted-foreground hover:text-foreground mt-8 inline-block text-sm underline-offset-4 hover:underline"
           to="/faq"
         >
           View all FAQ &rarr;

@@ -46,62 +46,65 @@ export function BecomeDev() {
   }, []);
 
   return (
-    <section className="flex justify-center px-6 py-16 lg:py-24">
-      <div className="flex max-w-4xl min-w-0 flex-col items-center gap-6 text-center">
-        <div className="space-y-2">
-          <h2 className="text-2xl font-bold tracking-tight lg:text-3xl">
-            Become a Developer
-          </h2>
-          <p className="text-muted-foreground text-sm leading-relaxed">
-            Join our community and help build the future of developer tools.
-          </p>
+    <section
+      id="become-a-developer"
+      className="border-border bg-muted/30 border-y"
+    >
+      <div className="container-editorial py-16 md:py-24">
+        <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+          <div className="max-w-2xl">
+            <p className="eyebrow">
+              <span className="eyebrow-dot" />
+              Join the team
+            </p>
+            <h2 className="section-title mt-4">Become a Developer</h2>
+            <p className="lead mt-4">
+              Join our community and help build the future of developer tools.
+            </p>
+          </div>
+          {mounted && (
+            <Button
+              onClick={() => {
+                try {
+                  logger.info("BecomeDev Discord button clicked", {
+                    url: "https://discord.vomlabs.com",
+                  });
+                  toast.info("Opening Discord...", { duration: 2000 });
+                  window.open(
+                    "https://discord.vomlabs.com",
+                    "_blank",
+                    "noopener,noreferrer",
+                  );
+                } catch (error) {
+                  logger.error("Failed to open Discord from BecomeDev", {
+                    error:
+                      error instanceof Error ? error.message : String(error),
+                  });
+                  toast.error("Failed to open Discord. Please try again.");
+                }
+              }}
+            >
+              <DiscordIcon className="size-4" />
+              Join Discord to Apply
+            </Button>
+          )}
         </div>
-        <div className="grid w-full grid-cols-1 gap-3 sm:grid-cols-3">
+        <ul className="mt-12 grid gap-10 sm:grid-cols-3 sm:gap-8">
           {items.map((item) => {
             const Icon = item.icon;
             return (
-              <div
-                className="border-border bg-muted flex flex-col items-center gap-2 border p-4 text-center"
-                key={item.title}
-              >
-                <Icon className="text-primary size-5" />
-                <div className="space-y-0.5">
-                  <h3 className="text-sm font-medium">{item.title}</h3>
-                  <p className="text-muted-foreground text-xs leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
-              </div>
+              <li className="border-border border-t pt-6" key={item.title}>
+                <Icon className="text-lime-dim dark:text-lime size-4" />
+                <h3 className="mt-3 text-base font-medium tracking-[-0.01em]">
+                  {item.title}
+                </h3>
+                <p className="text-muted-foreground mt-1 text-sm leading-relaxed">
+                  {item.description}
+                </p>
+              </li>
             );
           })}
-        </div>
-        {mounted && (
-          <Button
-            className="bg-[#5865F2] text-white hover:bg-[#4752c4]"
-            onClick={() => {
-              try {
-                logger.info("BecomeDev Discord button clicked", {
-                  url: "https://discord.vomlabs.com",
-                });
-                toast.info("Opening Discord...", { duration: 2000 });
-                window.open(
-                  "https://discord.vomlabs.com",
-                  "_blank",
-                  "noopener,noreferrer",
-                );
-              } catch (error) {
-                logger.error("Failed to open Discord from BecomeDev", {
-                  error: error instanceof Error ? error.message : String(error),
-                });
-                toast.error("Failed to open Discord. Please try again.");
-              }
-            }}
-            variant="outline"
-          >
-            <DiscordIcon className="size-4" />
-            Join Discord to Apply
-          </Button>
-        )}
+        </ul>
       </div>
     </section>
   );

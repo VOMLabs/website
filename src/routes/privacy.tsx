@@ -1,90 +1,75 @@
 import { createFileRoute } from "@tanstack/react-router";
 
+import { LegalPage, SectionRow } from "@/components/ui/section";
+
 export const Route = createFileRoute("/privacy")({ component: PrivacyPage });
 
 function PrivacyPage() {
   return (
-    <main className="flex flex-col items-center px-6 py-24">
-      <div className="flex w-full max-w-2xl flex-col gap-8">
-        <div className="space-y-2 text-center">
-          <h1 className="text-3xl font-bold tracking-tight lg:text-4xl">
-            Privacy Policy.
-          </h1>
-          <p className="text-muted-foreground text-sm leading-relaxed">
-            How VOMLabs handles your data.
-          </p>
-        </div>
-        <div className="flex flex-col gap-6">
-          <Section title="Our Commitment">
-            <p className="text-muted-foreground text-xs leading-relaxed">
-              VOMLabs is committed to protecting your privacy. We adhere to the
-              principle of data minimization and collect only what is necessary
-              to improve our software.
-            </p>
-          </Section>
-          <Section title="Data Collection">
-            <h3 className="text-xs font-medium">Anonymous Usage Statistics</h3>
-            <p className="text-muted-foreground text-xs leading-relaxed">
-              Certain VOMLabs plugins may transmit anonymous usage statistics
-              via FastStats. This data is limited to non-personal information
-              such as plugin version and server platform, and is used solely to
-              understand software adoption and guide development efforts.
-            </p>
-            <h3 className="text-xs font-medium">No Personal Tracking</h3>
-            <p className="text-muted-foreground text-xs leading-relaxed">
-              VOMLabs does not track personal data, browsing behavior on this
-              website, or individual player information. We do not use cookies,
-              analytics scripts, or similar tracking mechanisms on this website.
-            </p>
-            <h3 className="text-xs font-medium">Opt-Out Policy</h3>
-            <p className="text-muted-foreground text-xs leading-relaxed">
-              Anonymous usage statistics collection is enabled by default in
-              plugins that implement it. Where supported, this feature may be
-              disabled through the plugin&apos;s configuration files. Refer to
-              the respective plugin&apos;s documentation for opt-out
-              instructions.
-            </p>
-          </Section>
-          <Section title="Your Rights">
-            <p className="text-muted-foreground text-xs leading-relaxed">
-              To the extent that VOMLabs processes any personal data, you retain
-              the right to access, rectify, or request deletion of such data.
-              Because our data collection is limited to anonymous statistics,
-              these rights will typically have no practical application. If you
-              contact VOMLabs directly, any personal information you provide
-              will be used exclusively for the purpose of responding to your
-              inquiry and will not be retained longer than necessary.
-            </p>
-          </Section>
-          <Section title="Contact">
-            <p className="text-muted-foreground text-xs leading-relaxed">
-              For privacy-related inquiries, please contact us at:{" "}
-              <a
-                className="hover:text-foreground underline underline-offset-2"
-                href="mailto:privacy@vomlabs.com"
-              >
-                privacy@vomlabs.com
-              </a>
-              .
-            </p>
-          </Section>
-        </div>
-      </div>
-    </main>
-  );
-}
-
-function Section({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="border-border bg-muted hover:border-foreground/20 border p-4 transition-colors duration-150">
-      <h2 className="mb-3 text-sm font-semibold">{title}</h2>
-      <div className="flex flex-col gap-2">{children}</div>
-    </div>
+    <LegalPage
+      eyebrow="Legal"
+      title="Privacy Policy"
+      description="How VOMLabs handles your data."
+    >
+      <SectionRow index="01" title="Our Commitment">
+        <p>
+          VOMLabs is committed to protecting your privacy. We adhere to the
+          principle of data minimization and collect only what is necessary to
+          improve our software.
+        </p>
+      </SectionRow>
+      <SectionRow index="02" title="Data Collection">
+        <h3 className="text-foreground font-mono text-xs tracking-[0.15em] uppercase">
+          Anonymous Usage Statistics
+        </h3>
+        <p>
+          VOMLabs collects anonymous usage statistics from its Minecraft plugins
+          via FastStats (faststats.dev). This data is limited to non-personal
+          information such as plugin version and server platform, and is used
+          solely to understand software adoption and guide development efforts.
+        </p>
+        <h3 className="text-foreground font-mono text-xs tracking-[0.15em] uppercase">
+          No Personal Tracking
+        </h3>
+        <p>
+          The FastStats telemetry described above is anonymous — VOMLabs does
+          not collect personal data, browsing behavior on this website, or
+          individual player information. We do not use cookies, analytics
+          scripts, or similar tracking mechanisms on this website.
+        </p>
+        <h3 className="text-foreground font-mono text-xs tracking-[0.15em] uppercase">
+          Opt-Out Policy
+        </h3>
+        <p>
+          Anonymous usage statistics collection is enabled by default in plugins
+          that implement it. Where supported, this feature may be disabled
+          through the plugin&apos;s configuration files. Refer to the respective
+          plugin&apos;s documentation for opt-out instructions.
+        </p>
+      </SectionRow>
+      <SectionRow index="03" title="Your Rights">
+        <p>
+          To the extent that VOMLabs processes any personal data, you retain the
+          right to access, rectify, or request deletion of such data. Because
+          our data collection is limited to anonymous statistics, these rights
+          will typically have no practical application. If you contact VOMLabs
+          directly, any personal information you provide will be used
+          exclusively for the purpose of responding to your inquiry and will not
+          be retained longer than necessary.
+        </p>
+      </SectionRow>
+      <SectionRow index="04" title="Contact">
+        <p>
+          For privacy-related inquiries, please contact us at:{" "}
+          <a
+            className="hover:text-foreground underline underline-offset-2"
+            href="mailto:privacy@vomlabs.com"
+          >
+            privacy@vomlabs.com
+          </a>
+          .
+        </p>
+      </SectionRow>
+    </LegalPage>
   );
 }

@@ -5,6 +5,7 @@ import {
   redirect,
 } from "@tanstack/react-router";
 
+import { Logo } from "@/components/logo";
 import { Separator } from "@/components/ui/separator";
 import {
   Sidebar,
@@ -48,8 +49,8 @@ function AdminLayout() {
     <SidebarProvider>
       <Sidebar>
         <SidebarHeader>
-          <Link className="flex items-center gap-2 px-2" to="/">
-            <span className="bg-primary size-1.5" />
+          <Link className="flex items-center gap-2.5 px-2" to="/">
+            <Logo className="size-6" />
             <span className="text-sm font-bold">VOMLabs Admin</span>
           </Link>
         </SidebarHeader>
@@ -74,7 +75,9 @@ function AdminLayout() {
         <header className="border-border flex h-12 items-center gap-2 border-b px-4">
           <SidebarTrigger />
           <Separator className="h-6" orientation="vertical" />
-          <span className="text-muted-foreground text-sm">Admin Dashboard</span>
+          <span className="text-muted-foreground font-mono text-xs tracking-[0.15em] uppercase">
+            Admin Dashboard
+          </span>
         </header>
         <div className="p-6">
           <Outlet />

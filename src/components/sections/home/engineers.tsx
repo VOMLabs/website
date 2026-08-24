@@ -12,6 +12,7 @@ import { toast } from "sonner";
 
 import { type IconComponent } from "@/components/icons";
 import { Button } from "@/components/ui/button";
+import { Section } from "@/components/ui/section";
 import { createLogger } from "@/lib/logger";
 
 const logger = createLogger("Engineers");
@@ -74,37 +75,35 @@ export function Engineers() {
   }, []);
 
   return (
-    <section className="flex justify-center px-6 py-16 lg:py-24">
-      <div className="flex max-w-5xl min-w-0 flex-col items-center gap-6 text-center">
-        <div className="space-y-2">
-          <h2 className="text-2xl font-bold tracking-tight lg:text-3xl">
-            Built for Engineers
-          </h2>
-          <p className="text-muted-foreground text-sm leading-relaxed">
-            We prioritize developer experience, performance, and code quality in
-            everything we build.
-          </p>
-        </div>
-        <div className="grid w-full grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-          {items.map((item) => {
-            const Icon = item.icon;
-            return (
-              <div
-                className="border-border bg-muted flex flex-col items-center gap-2 border p-4 text-center"
-                key={item.title}
-              >
-                <Icon className="text-primary size-5" />
-                <div className="space-y-0.5">
-                  <h3 className="text-sm font-medium">{item.title}</h3>
-                  <p className="text-muted-foreground text-xs leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
+    <Section
+      id="engineers"
+      eyebrow="FOR DEVELOPERS"
+      title="Built for Engineers"
+      description="We prioritize developer experience, performance, and code quality in everything we build."
+    >
+      <ul className="border-border border-t">
+        {items.map((item) => {
+          const Icon = item.icon;
+          return (
+            <li
+              className="border-border grid gap-2 border-b py-6 md:grid-cols-[1fr_1.5fr] md:gap-10 md:py-8"
+              key={item.title}
+            >
+              <div className="flex items-center gap-3">
+                <Icon className="text-lime-dim dark:text-lime size-4 shrink-0" />
+                <h3 className="text-base font-medium tracking-[-0.01em] md:text-lg">
+                  {item.title}
+                </h3>
               </div>
-            );
-          })}
-        </div>
-        {mounted && (
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                {item.description}
+              </p>
+            </li>
+          );
+        })}
+      </ul>
+      {mounted && (
+        <div className="mt-10">
           <Button
             onClick={() => {
               try {
@@ -128,8 +127,8 @@ export function Engineers() {
             <BookOpen className="size-4" />
             View the Documentation
           </Button>
-        )}
-      </div>
-    </section>
+        </div>
+      )}
+    </Section>
   );
 }

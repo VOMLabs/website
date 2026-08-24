@@ -1,8 +1,8 @@
-import "dotenv/config";
+import { eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 
-import { faqs, products } from "../lib/db/schema.js";
+import { blogPosts, faqs, products, users } from "../lib/db/schema.js";
 import { env } from "../lib/env.js";
 
 const connectionString = env.DATABASE_URL;
@@ -23,7 +23,7 @@ const faqData = [
   {
     question: "Do you collect any telemetry?",
     answer:
-      "No. We do not track any of your data. Your privacy is our priority, ensuring a safe and private development experience.",
+      "Yes — anonymously. Our Minecraft plugins use FastStats (faststats.dev) to collect anonymous usage statistics such as plugin version and server platform, so we can understand adoption and improve our software. No personal data is collected, and the telemetry can be disabled in each plugin's configuration.",
   },
   {
     question: "How often do you release updates?",
@@ -150,6 +150,65 @@ const productData = [
   },
 ];
 
+const authorData = {
+  id: "seed-author-vomlabs",
+  name: "VOMLabs Team",
+  email: "hello@vomlabs.com",
+  emailVerified: true,
+  createdAt: new Date(),
+  updatedAt: new Date(),
+};
+
+const helloWorldPost = {
+  slug: "hello-world",
+  title: "Hello, World: Vite 8, Rolldown, and Bun",
+  excerpt:
+    "A quick tour of the modern build stack powering VOMLabs — Vite 8, Rolldown, and Bun.",
+  content: `Welcome to the first post on the VOMLabs blog. Today we're taking a quick look at the modern JavaScript build stack powering this very site: **Vite 8**, **Rolldown**, and **Bun**.
+
+## The Stack
+
+This website is built with TanStack Start, styled with Tailwind CSS v4, and tooled end-to-end with Bun:
+
+- **Bun** is the runtime and package manager — it installs dependencies, runs tests, and executes scripts with zero config.
+- **Vite 8** is the bundler, now powered by **Rolldown**, the Rust-based port of Rollup.
+- **Tailwind CSS v4** compiles styles at build time with lightning-fast CSS.
+
+## Code Blocks
+
+Everything in the toolchain runs on plain Bun scripts now. No \`dotenv\`, no \`tsx\`, no \`vitest\`:
+
+\`\`\`bash
+bun run dev      # start the dev server
+bun test         # run tests with bun:test
+bun run db:seed  # seed the database (plain TS, no tsx)
+\`\`\`
+
+And a quick TypeScript example:
+
+\`\`\`ts
+import { describe, expect, it } from "bun:test";
+
+describe("tooling", () => {
+  it("runs natively on Bun", () => {
+    expect(typeof Bun).toBe("object");
+  });
+});
+\`\`\`
+
+## Callouts
+
+> **Tip:** Bun loads \`.env\` files automatically, so \`import "dotenv/config"\` is no longer needed.
+
+> **Note:** The \`bun:test\` runner is a drop-in replacement for Vitest for plain unit tests — same \`describe\`/\`it\`/\`expect\` API.
+
+## Why It Matters
+
+Faster installs, faster tests, faster builds. One runtime for scripts, tests, and production — that's the whole pitch.
+
+Stay tuned for more posts about what we're building at VOMLabs.`,
+};
+
 async function main() {
   try {
     console.log("Seeding FAQs...");
@@ -161,6 +220,22 @@ async function main() {
     await db.delete(products);
     await db.insert(products).values(productData);
     console.log(`Successfully seeded ${productData.length} products.`);
+
+    console.log("Seeding blog author...");
+    await db
+      .insert(users)
+      .values(authorData)
+      .onConflictDoNothing({ target: users.id });
+    console.log(`Author "${authorData.name}" ready (${authorData.id}).`);
+
+    console.log("Seeding blog posts...");
+    await db.delete(blogPosts).where(eq(blogPosts.slug, helloWorldPost.slug));
+    await db.insert(blogPosts).values({
+      ...helloWorldPost,
+      authorId: authorData.id,
+      published: true,
+    });
+    console.log(`Seeded post "${helloWorldPost.title}".`);
 
     process.exit(0);
   } catch (error) {

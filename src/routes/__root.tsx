@@ -15,6 +15,7 @@ import { ErrorPage } from "@/components/error-page";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/sections/home/footer";
 import { ThemeProvider } from "@/components/theme-provider";
+import { buttonVariants } from "@/components/ui/button";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { log } from "@/lib/logger";
@@ -40,6 +41,15 @@ export const Route = createRootRoute({
         rel: "stylesheet",
         href: appCss,
       },
+      {
+        rel: "icon",
+        type: "image/svg+xml",
+        href: "/favicon.svg",
+      },
+      {
+        rel: "manifest",
+        href: "/manifest.json",
+      },
     ],
   }),
   notFoundComponent: () => (
@@ -54,10 +64,7 @@ export const Route = createRootRoute({
         <p className="text-muted-foreground text-sm leading-relaxed">
           The page you&apos;re looking for doesn&apos;t exist or has been moved.
         </p>
-        <Link
-          className="bg-primary text-primary-foreground hover:bg-primary/80 focus-visible:border-ring focus-visible:ring-ring/50 inline-flex h-8 shrink-0 items-center justify-center gap-1.5 border border-transparent px-2.5 text-xs font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:ring-1 active:translate-y-px disabled:pointer-events-none disabled:opacity-50"
-          to="/"
-        >
+        <Link className={buttonVariants({ size: "sm" })} to="/">
           Go home
         </Link>
       </div>

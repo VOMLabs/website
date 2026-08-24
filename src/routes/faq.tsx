@@ -39,36 +39,44 @@ function FaqPage() {
     : allFaqs;
 
   return (
-    <main className="flex flex-col items-center px-6 py-24">
-      <div className="flex w-full max-w-2xl flex-col items-center gap-8">
-        <div className="space-y-2 text-center">
-          <h1 className="text-3xl font-bold tracking-tight lg:text-4xl">
-            FAQ.
-          </h1>
-          <p className="text-muted-foreground text-sm leading-relaxed">
+    <main className="border-border border-t">
+      <div className="container-editorial py-16 md:py-24">
+        <header className="mb-12 flex max-w-3xl flex-col gap-4 md:mb-16">
+          <p className="eyebrow">
+            <span className="eyebrow-dot" />
+            FAQ
+          </p>
+          <h1 className="display">Frequently asked questions</h1>
+          <p className="lead max-w-2xl">
             Answers to what people usually want to know about VOMLabs.
           </p>
-        </div>
-        <div className="relative w-full">
+        </header>
+        <div className="relative mb-10 max-w-md">
           <Magnifier className="text-muted-foreground pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2" />
           <input
-            className="border-border bg-muted placeholder:text-muted-foreground focus:border-ring h-9 w-full border pr-3 pl-9 text-sm outline-none"
+            aria-label="Search questions"
+            className="border-border bg-background placeholder:text-muted-foreground focus:border-foreground h-10 w-full border pr-3 pl-9 text-sm outline-none"
             onChange={(e) => setQuery(e.target.value || null)}
             placeholder="Search questions..."
             type="text"
             value={query}
           />
         </div>
-        <div className="flex w-full flex-col gap-2 text-left">
+        <div className="divide-border border-border flex w-full flex-col divide-y border-y">
           {filtered.length === 0 ? (
-            <p className="text-muted-foreground py-8 text-center text-sm">
+            <p className="text-muted-foreground py-8 text-sm">
               No results found for &quot;{query}&quot;
             </p>
           ) : (
             filtered.map((faq) => (
-              <div className="border-border bg-muted border p-4" key={faq.id}>
-                <p className="mb-1 text-sm font-medium">{faq.question}</p>
-                <p className="text-muted-foreground text-xs leading-relaxed">
+              <div
+                className="grid gap-2 py-6 md:grid-cols-[1fr_2fr] md:gap-10 md:py-8"
+                key={faq.id}
+              >
+                <h2 className="text-foreground text-sm font-medium tracking-[-0.01em] md:text-base">
+                  {faq.question}
+                </h2>
+                <p className="text-muted-foreground text-sm leading-relaxed">
                   {faq.answer}
                 </p>
               </div>

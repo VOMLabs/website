@@ -6,6 +6,7 @@ import Shield from "@gravity-ui/icons/Shield";
 import Thunderbolt from "@gravity-ui/icons/Thunderbolt";
 
 import { type IconComponent } from "@/components/icons";
+import { Section } from "@/components/ui/section";
 
 const features: {
   icon: IconComponent;
@@ -32,7 +33,7 @@ const features: {
     icon: Shield,
     title: "Security Focused",
     description:
-      "Privacy-first approach with no telemetry and secure defaults.",
+      "Privacy-first approach — only anonymous, opt-out usage statistics — with secure defaults.",
   },
   {
     icon: ArrowRotateRight,
@@ -49,36 +50,31 @@ const features: {
 
 export function Features() {
   return (
-    <section className="flex justify-center px-6 py-16 lg:py-24">
-      <div className="flex max-w-5xl min-w-0 flex-col items-center gap-6 text-center">
-        <div className="space-y-2">
-          <h2 className="text-2xl font-bold tracking-tight lg:text-3xl">
-            Why VOMLabs?
-          </h2>
-          <p className="text-muted-foreground text-sm leading-relaxed">
-            What sets us apart.
-          </p>
-        </div>
-        <div className="grid w-full grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3">
-          {features.map((feature) => {
-            const Icon = feature.icon;
-            return (
-              <div
-                className="border-border bg-muted flex flex-col items-start gap-2 border p-4 text-left"
-                key={feature.title}
-              >
-                <Icon className="text-primary size-5" />
-                <div className="space-y-0.5">
-                  <h3 className="text-sm font-medium">{feature.title}</h3>
-                  <p className="text-muted-foreground text-xs leading-relaxed">
-                    {feature.description}
-                  </p>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </section>
+    <Section
+      id="features"
+      eyebrow="WHY VOMLABS"
+      title="Why VOMLabs?"
+      description="What sets us apart."
+    >
+      <ul className="bg-border grid grid-cols-1 gap-px sm:grid-cols-2 lg:grid-cols-3">
+        {features.map((feature) => {
+          const Icon = feature.icon;
+          return (
+            <li
+              className="group bg-background hover:bg-muted/40 p-6 transition-colors duration-200"
+              key={feature.title}
+            >
+              <Icon className="text-lime-dim dark:text-lime size-4" />
+              <h3 className="mt-3 text-base font-medium tracking-[-0.01em]">
+                {feature.title}
+              </h3>
+              <p className="text-muted-foreground mt-1 text-sm leading-relaxed">
+                {feature.description}
+              </p>
+            </li>
+          );
+        })}
+      </ul>
+    </Section>
   );
 }

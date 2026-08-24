@@ -56,18 +56,26 @@ function AdminFaqPage() {
   }
 
   return (
-    <div className="flex flex-col gap-6">
-      <h1 className="text-2xl font-bold tracking-tight">Manage FAQ</h1>
+    <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-3">
+        <p className="eyebrow">
+          <span className="eyebrow-dot" />
+          Admin
+        </p>
+        <h1 className="section-title">Manage FAQ</h1>
+      </div>
       <form
-        className="border-border bg-muted flex flex-col gap-3 border p-4"
+        className="border-border flex flex-col gap-3 border p-4"
         onSubmit={handleAdd}
       >
         <Input
+          aria-label="Question"
           onChange={(e) => setQuestion(e.target.value)}
           placeholder="Question"
           value={question}
         />
         <Input
+          aria-label="Answer"
           onChange={(e) => setAnswer(e.target.value)}
           placeholder="Answer"
           value={answer}

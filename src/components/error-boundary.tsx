@@ -1,5 +1,6 @@
 import { Component, type ErrorInfo, type ReactNode } from "react";
 
+import { Button } from "@/components/ui/button";
 import { createLogger } from "@/lib/logger";
 
 const logger = createLogger("ErrorBoundary");
@@ -48,8 +49,7 @@ export class ErrorBoundary extends Component<Props, State> {
               An unexpected error occurred. Please try refreshing the page.
             </p>
           </div>
-          <button
-            className="bg-primary text-primary-foreground hover:bg-primary/80 inline-flex h-8 shrink-0 items-center justify-center gap-1.5 border border-transparent px-2.5 text-xs font-medium transition-all outline-none select-none"
+          <Button
             onClick={() => {
               this.setState({ hasError: false, error: null });
               window.location.reload();
@@ -57,7 +57,7 @@ export class ErrorBoundary extends Component<Props, State> {
             type="button"
           >
             Refresh page
-          </button>
+          </Button>
         </div>
       );
     }

@@ -37,8 +37,14 @@ function AdminAccountsPage() {
   }
 
   return (
-    <div className="flex flex-col gap-6">
-      <h1 className="text-2xl font-bold tracking-tight">Manage Accounts</h1>
+    <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-3">
+        <p className="eyebrow">
+          <span className="eyebrow-dot" />
+          Admin
+        </p>
+        <h1 className="section-title">Manage Accounts</h1>
+      </div>
       <Table>
         <TableHeader>
           <TableRow>

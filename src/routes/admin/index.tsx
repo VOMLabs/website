@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getAdminStats } from "@/lib/db/functions";
 
 export const Route = createFileRoute("/admin/")({
@@ -11,39 +10,39 @@ export const Route = createFileRoute("/admin/")({
 function AdminDashboard() {
   const { faqCount, postCount, userCount } = Route.useLoaderData();
   return (
-    <div className="flex flex-col gap-6">
-      <h1 className="text-2xl font-bold tracking-tight">Dashboard</h1>
-      <div className="grid gap-4 md:grid-cols-3">
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-muted-foreground text-sm">
-              FAQ Items
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-2xl font-bold">{faqCount}</p>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-muted-foreground text-sm">
-              Blog Posts
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-2xl font-bold">{postCount}</p>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-muted-foreground text-sm">
-              Accounts
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-2xl font-bold">{userCount}</p>
-          </CardContent>
-        </Card>
+    <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-3">
+        <p className="eyebrow">
+          <span className="eyebrow-dot" />
+          Admin
+        </p>
+        <h1 className="section-title">Dashboard</h1>
+      </div>
+      <div className="border-border bg-border grid grid-cols-1 gap-px sm:grid-cols-3">
+        <div className="bg-background rounded-lg p-6">
+          <p className="text-muted-foreground font-mono text-xs tracking-[0.15em] uppercase">
+            FAQ Items
+          </p>
+          <p className="mt-3 text-3xl font-medium tracking-[-0.02em]">
+            {faqCount}
+          </p>
+        </div>
+        <div className="bg-background rounded-lg p-6">
+          <p className="text-muted-foreground font-mono text-xs tracking-[0.15em] uppercase">
+            Blog Posts
+          </p>
+          <p className="mt-3 text-3xl font-medium tracking-[-0.02em]">
+            {postCount}
+          </p>
+        </div>
+        <div className="bg-background rounded-lg p-6">
+          <p className="text-muted-foreground font-mono text-xs tracking-[0.15em] uppercase">
+            Accounts
+          </p>
+          <p className="mt-3 text-3xl font-medium tracking-[-0.02em]">
+            {userCount}
+          </p>
+        </div>
       </div>
     </div>
   );

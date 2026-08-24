@@ -4,6 +4,7 @@ import Terminal from "@gravity-ui/icons/Terminal";
 import Wrench from "@gravity-ui/icons/Wrench";
 
 import { type IconComponent } from "@/components/icons";
+import { Section } from "@/components/ui/section";
 
 const items: {
   icon: IconComponent;
@@ -38,37 +39,36 @@ const items: {
 
 export function About() {
   return (
-    <section className="flex justify-center px-6 py-16 lg:py-24">
-      <div className="flex max-w-4xl min-w-0 flex-col items-center gap-6 text-center">
-        <div className="space-y-2">
-          <h2 className="text-2xl font-bold tracking-tight lg:text-3xl">
-            What is VOMLabs
-          </h2>
-          <p className="text-muted-foreground text-sm leading-relaxed">
-            We are a team of developers building high-quality, modern software
-            and developer-focused solutions at affordable prices.
-          </p>
-        </div>
-        <div className="grid w-full grid-cols-1 gap-3 sm:grid-cols-2 lg:gap-5">
-          {items.map((item) => {
-            const Icon = item.icon;
-            return (
-              <div
-                className="border-border bg-muted flex flex-col items-start gap-2 border p-4 text-left"
-                key={item.title}
-              >
-                <Icon className="text-primary size-5" />
-                <div className="space-y-1">
-                  <h3 className="text-sm font-medium">{item.title}</h3>
-                  <p className="text-muted-foreground text-xs leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
+    <Section
+      id="about"
+      eyebrow="WHAT WE DO"
+      title="Capabilities"
+      description="We are a team of developers building high-quality, modern software and developer-focused solutions at affordable prices."
+    >
+      <ol className="divide-border border-border flex flex-col divide-y border-y">
+        {items.map((item, i) => {
+          const Icon = item.icon;
+          return (
+            <li
+              className="group grid gap-2 py-6 md:grid-cols-[3rem_1fr_1.4fr] md:gap-8 md:py-8"
+              key={item.title}
+            >
+              <span className="text-muted-foreground/60 font-mono text-xs">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <div className="flex items-center gap-3">
+                <Icon className="text-lime-dim dark:text-lime size-4 shrink-0" />
+                <h3 className="text-lg font-medium tracking-[-0.01em] transition-transform duration-200 group-hover:translate-x-0.5 md:text-xl">
+                  {item.title}
+                </h3>
               </div>
-            );
-          })}
-        </div>
-      </div>
-    </section>
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                {item.description}
+              </p>
+            </li>
+          );
+        })}
+      </ol>
+    </Section>
   );
 }

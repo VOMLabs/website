@@ -1,11 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 
+import { Reveal } from "@/components/reveal";
 import { About } from "@/components/sections/home/about";
 import { BecomeDev } from "@/components/sections/home/become-dev";
 import { Engineers } from "@/components/sections/home/engineers";
 import { Faq } from "@/components/sections/home/faq";
 import { Features } from "@/components/sections/home/features";
 import { Hero } from "@/components/sections/home/hero";
+import { Statement } from "@/components/sections/home/statement";
 import { getHomeFaqs } from "@/lib/db/functions";
 import { createLogger } from "@/lib/logger";
 
@@ -32,21 +34,24 @@ function App() {
   return (
     <div className="flex flex-col">
       <Hero />
-      <div id="features">
+      <Reveal>
+        <Statement />
+      </Reveal>
+      <Reveal>
         <Features />
-      </div>
-      <div id="about">
+      </Reveal>
+      <Reveal>
         <About />
-      </div>
-      <div id="become-a-developer">
+      </Reveal>
+      <Reveal>
         <BecomeDev />
-      </div>
-      <div id="engineers">
+      </Reveal>
+      <Reveal>
         <Engineers />
-      </div>
-      <div id="faq">
+      </Reveal>
+      <Reveal>
         <Faq faqs={faqs} />
-      </div>
+      </Reveal>
     </div>
   );
 }
